@@ -1,8 +1,9 @@
 ---
-sidebar_position: 10
+sidebar_position: 6
+toc_max_heading_level: 5
 ---
 
-# DateTime
+# Date Date
 ## 현재 시간 구하기
 ```dart
 DateTime now = DateTime.now();

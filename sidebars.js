@@ -1,6 +1,6 @@
 module.exports = {
-
   flutter: [
+    'flutter/what-is-flutter',
     {
       type: 'category',
       label: 'Dart',

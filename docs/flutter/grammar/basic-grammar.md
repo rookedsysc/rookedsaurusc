@@ -3,7 +3,6 @@ sidebar_position: 1
 ---
 
 # 기본 문법
-
 ## 기본 자료형
 
 [기본 자료형](https://github.com/rookedsysc/Flutter-Study/commit/86a5ec735d6aae7c77a42eedef279ca8c327aaf2)

@@ -63,7 +63,7 @@ const config = {
           // flutter sidebar
           {
             type: 'doc',
-            docId: 'flutter/grammar/basic-grammar',
+            docId: 'flutter/what-is-flutter',
             position: 'left',
             label: 'Flutter',
             sidebarId: 'flutter',
