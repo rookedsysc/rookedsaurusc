@@ -1,0 +1,20 @@
+{
+  "types": [
+    { "type": "Chore", "section": "Others", "hidden": false },
+    { "type": "Revert", "section": "Reverts", "hidden": false },
+    { "type": "Feat", "section": "Features", "hidden": false },
+    { "type": "Fix", "section": "Bug Fixes", "hidden": false },
+    {
+      "type": "Improvenment",
+      "section": "Feature Improvements",
+      "hidden": false
+    },
+    { "type": "Docs", "section": "Docs", "hidden": false },
+    { "type": "Style", "section": "Styling", "hidden": false },
+    { "type": "Refactor", "section": "Code Refactoring", "hidden": false },
+    { "type": "Pref", "section": "Performance Improvements", "hidden": false },
+    { "type": "Test", "section": "Tests", "hidden": false },
+    { "type": "Build", "section": "Build System", "hidden": false },
+    { "type": "Ci", "section": "CI", "hidden": false }
+  ]
+}

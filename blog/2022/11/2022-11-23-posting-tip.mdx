@@ -1,0 +1,34 @@
+---
+slug: posting-tip
+title: MarkDown 기능
+authors: [rookedsysc] 
+tags: [docusaurus, html]
+---
+
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+
+## 탭 선택 
+
+문서 상단 제목 위에 `mdx-code-block` `코드블럭`에 mdx import 해줘야 사용 가능함.
+```
+``mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+`` << ` 하나 더 추가(코드블럭)
+```
+
+```html
+<Tabs>
+  <TabItem value="apple">This is an apple </TabItem>
+  <TabItem value="orange">This is an orange </TabItem>
+</Tabs>
+```
+
+<Tabs>
+  <TabItem value="apple" label="Apple">This is an apple 🍎</TabItem>
+  <TabItem value="orange" label="Orange">This is an orange 🍊</TabItem>
+  <TabItem value="banana" label="Banana">This is a banana 🍌</TabItem>
+</Tabs>
