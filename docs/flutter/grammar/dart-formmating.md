@@ -1,6 +1,6 @@
 ---
 sidebar_position: 7
-toc_max_heading_level: 5
+toc_max_heading_level: 4
 ---
 
 # Formmating
@@ -35,6 +35,7 @@ String getTimeFormat(int number) {
 ## 숫자형 포매팅
 ### String to Int
 int.parse( `String` )
+
 ```dart
 String ten = '10';
 print(int.parse(ten).runtimeType); // int 출력

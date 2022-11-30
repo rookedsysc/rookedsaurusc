@@ -1,0 +1,26 @@
+---
+slug: callback
+title: Call Back이란?
+authors: [rookedsysc] 
+tags: [Programming]
+---
+
+프로그래밍에서 callback 또는 callback function은 다른 코드의 인수로서 넘겨주는 실행 가능한 코드를 말한다. 콜백을 넘겨받는 코드는 이 콜백을 필요에 따라서 즉시 실행할 수 잇고 아니면 나중에 실행할 수도 있다.
+
+## 콜백의 예
+forEach는 쉽게 말하면 <br></br> 
+```dart
+for(int i = 0; i < list.length ; i++) 
+  { list[i] }
+```
+와 같은 역할을 한다. <br></br>
+그리고 forEach의 인자에는 각 배열의 요소에다가 실행할 함수를 넘겨주게 되는데 이를 콜백함수라고 한다.
+```dart
+void main() {
+  var list = [1, 2, 3];
+  list.forEach((element) {
+    print(element);
+  });
+}
+```
+또 다른 예로 onTab등에 들어가는 함수등이 전부 콜백에 해당된다.

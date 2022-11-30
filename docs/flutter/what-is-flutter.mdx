@@ -1,0 +1,42 @@
+---
+sidebar_position: 1
+toc_max_heading_level: 4
+---
+
+# What is Dart?
+
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+
+[![Star History Chart](https://api.star-history.com/svg?repos=flutter/flutter,facebook/react-native&type=Date)](https://star-history.com/#flutter/flutter&facebook/react-native&Date)
+
+## Lint
+### Lint 경고 제거
+:::tip Lint 설정(const 경고 제거)
+```yaml title="analysis_options.yaml"
+linter:
+  rules:
+    prefer_const_constructors: false
+```
+:::
+
+### CLI: Lint 자동 수정
+:::tip CLI에서 Lint Control
+<Tabs>
+  <TabItem value="Lint 자동 수정">
+
+```bash
+dart fix --apply
+```
+
+  </TabItem>
+  <TabItem value="Lint 수정 필요한 부분 출력">
+
+```bash
+dart fix --dry-run
+```
+
+  </TabItem>
+</Tabs>

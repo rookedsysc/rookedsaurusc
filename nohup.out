@@ -1,0 +1,76 @@
+[2022-11-29T18:17:24.748Z] info  code-server 4.7.1 77bbed48315a7cc275dc05a53d197197928f4b88
+[2022-11-29T18:17:24.749Z] info  Using user-data-dir ~/.local/share/code-server
+[2022-11-29T18:17:24.769Z] info  Using config file ~/.config/code-server/config.yaml
+[2022-11-29T18:17:24.769Z] info  HTTP server listening on http://127.0.0.1:8080/ 
+[2022-11-29T18:17:24.769Z] info    - Authentication is enabled
+[2022-11-29T18:17:24.769Z] info      - Using password from ~/.config/code-server/config.yaml
+[2022-11-29T18:17:24.769Z] info    - Not serving HTTPS 
+[03:17:29] Extension host agent started.
+[03:17:29] [127.0.0.1][8f6d15b8][ExtensionHostConnection] Unknown reconnection token (never seen).
+[03:17:29] [127.0.0.1][2e1a3a1a][ManagementConnection] Unknown reconnection token (never seen).
+[03:17:35] [127.0.0.1][47287530][ManagementConnection] New connection established.
+[03:17:37] [127.0.0.1][e49af58d][ExtensionHostConnection] New connection established.
+[03:17:37] [127.0.0.1][e49af58d][ExtensionHostConnection] <141355> Launched Extension Host Process.
+[03:17:41] Using the in-memory credential store as the operating system's credential store could not be accessed. Please see https://aka.ms/vscode-server-keyring on how to set this up. Details: Cannot find module '../build/Release/keytar.node'
+Require stack:
+- /usr/lib/code-server/lib/vscode/node_modules/keytar/lib/keytar.js
+- /usr/lib/code-server/lib/vscode/out/bootstrap-amd.js
+- /usr/lib/code-server/out/node/util.js
+- /usr/lib/code-server/out/node/cli.js
+- /usr/lib/code-server/out/node/entry.js
+[03:18:29] [127.0.0.1][47287530][ManagementConnection] The client has disconnected gracefully, so the connection will be disposed.
+[03:18:29] [127.0.0.1][e49af58d][ExtensionHostConnection] <141355> Extension Host Process exited with code: 0, signal: null.
+[03:18:30] [127.0.0.1][f981ef35][ManagementConnection] New connection established.
+[03:18:31] [127.0.0.1][1968ecf2][ExtensionHostConnection] New connection established.
+[03:18:31] [127.0.0.1][1968ecf2][ExtensionHostConnection] <141442> Launched Extension Host Process.
+[03:18:44] Uninstalling extension: mutable-ai.mutable-ai@1.2.0
+[03:18:44] Detected extension removed from another source mutable-ai.mutable-ai
+[03:18:45] Successfully uninstalled extension: mutable-ai.mutable-ai@1.2.0
+[03:18:46] [127.0.0.1][f981ef35][ManagementConnection] The client has disconnected gracefully, so the connection will be disposed.
+[03:18:46] [127.0.0.1][1968ecf2][ExtensionHostConnection] <141442> Extension Host Process exited with code: 0, signal: null.
+[03:18:46] [127.0.0.1][2d94b32b][ManagementConnection] New connection established.
+[03:18:48] [127.0.0.1][2fedaaed][ExtensionHostConnection] New connection established.
+[03:18:48] [127.0.0.1][2fedaaed][ExtensionHostConnection] <141615> Launched Extension Host Process.
+[03:18:54] [127.0.0.1][bb2c07bf][ManagementConnection] New connection established.
+[03:18:55] [127.0.0.1][6c077d91][ExtensionHostConnection] New connection established.
+[03:18:55] [127.0.0.1][6c077d91][ExtensionHostConnection] <141734> Launched Extension Host Process.
+[03:19:00] Getting Manifest... dart-code.dart-code
+[03:19:02] Installing extension: dart-code.dart-code
+[03:19:17] Downloaded extension: dart-code.dart-code /home/rookedsysc/.local/share/code-server/CachedExtensionVSIXs/dart-code.dart-code-3.54.0-universal
+[03:19:47] Extracted extension to /home/rookedsysc/.local/share/code-server/extensions/.b4d75efc-7f1e-464e-8162-6bc35c01c96b: dart-code.dart-code
+[03:19:47] Renamed to /home/rookedsysc/.local/share/code-server/extensions/dart-code.dart-code-3.54.0-universal
+[03:19:47] Extracting completed. dart-code.dart-code
+[03:19:47] Extension installed successfully: dart-code.dart-code
+[03:27:38] [127.0.0.1][bb2c07bf][ManagementConnection] The client has reconnected.
+[03:27:42] [127.0.0.1][2d94b32b][ManagementConnection] The client has disconnected, will wait for reconnection 3h before disposing...
+Error: Unexpected SIGPIPE
+    at process.<anonymous> (/usr/lib/code-server/lib/vscode/out/bootstrap.js:1:407)
+    at process.emit (node:events:525:35)
+[03:27:42] Error: Unexpected SIGPIPE
+    at process.<anonymous> (/usr/lib/code-server/lib/vscode/out/vs/server/node/server.main.js:148:7922)
+    at process.emit (node:events:525:35)
+[03:27:42] [127.0.0.1][2d94b32b][ManagementConnection] Another client has connected, will shorten the wait for reconnection 5m before disposing...
+[03:27:42] [127.0.0.1][2fedaaed][ExtensionHostConnection] The client has reconnected.
+[03:28:25] [127.0.0.1][2d94b32b][ManagementConnection] The client has reconnected.
+[03:31:31] [127.0.0.1][6c077d91][ExtensionHostConnection] The client has reconnected.
+[03:55:05] Getting Manifest... unifiedjs.vscode-mdx
+[03:55:07] Installing extension: unifiedjs.vscode-mdx
+[03:55:10] Downloaded extension: unifiedjs.vscode-mdx /home/rookedsysc/.local/share/code-server/CachedExtensionVSIXs/unifiedjs.vscode-mdx-1.0.3-universal
+[03:55:10] Extracted extension to /home/rookedsysc/.local/share/code-server/extensions/.559cd109-b2cc-42aa-af22-787f09e3f188: unifiedjs.vscode-mdx
+[03:55:10] Renamed to /home/rookedsysc/.local/share/code-server/extensions/unifiedjs.vscode-mdx-1.0.3-universal
+[03:55:10] Extracting completed. unifiedjs.vscode-mdx
+[03:55:10] Extension installed successfully: unifiedjs.vscode-mdx
+[04:13:23] [127.0.0.1][bb2c07bf][ManagementConnection] The client has disconnected, will wait for reconnection 3h before disposing...
+Error: Unexpected SIGPIPE
+    at process.<anonymous> (/usr/lib/code-server/lib/vscode/out/bootstrap.js:1:407)
+    at process.emit (node:events:525:35)
+[04:13:23] Error: Unexpected SIGPIPE
+    at process.<anonymous> (/usr/lib/code-server/lib/vscode/out/vs/server/node/server.main.js:148:7922)
+    at process.emit (node:events:525:35)
+[04:13:28] [127.0.0.1][2d94b32b][ManagementConnection] The client has disconnected, will wait for reconnection 3h before disposing...
+Error: Unexpected SIGPIPE
+    at process.<anonymous> (/usr/lib/code-server/lib/vscode/out/bootstrap.js:1:407)
+    at process.emit (node:events:525:35)
+[04:13:28] Error: Unexpected SIGPIPE
+    at process.<anonymous> (/usr/lib/code-server/lib/vscode/out/vs/server/node/server.main.js:148:7922)
+    at process.emit (node:events:525:35)

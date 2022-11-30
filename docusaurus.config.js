@@ -34,14 +34,14 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/rookedsysc/rookedsysc_saurus.github.io/tree/main/packages/create-docusaurus/templates/shared/',
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/rookedsysc/rookedsysc_saurus.github.io/tree/main/packages/create-docusaurus/templates/shared/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -169,8 +169,19 @@ const config = {
         copyright: `Copyright © ${new Date().getFullYear()} Meta Platforms, Inc. Built with Docusaurus.`,
       },
       prism: {
+        theme: require('prism-react-renderer/themes/vsDark'),
         additionalLanguages: ['dart', 'bash'],
       },
+      plugins: ['@docusaurus/theme-live-codeblock'],
+        themeConfig: {
+          liveCodeBlock: {
+            /**
+            * live playground 위치를 에디터의 위 또는 아래로 설정합니다.
+            * 설정할 수 있는 값: "top" | "bottom"
+            */
+            playgroundPosition: 'bottom',
+    },
+  },
     }),
 };
 

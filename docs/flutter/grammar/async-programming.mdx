@@ -1,6 +1,6 @@
 ---
 sidebar_position: 4
-toc_max_heading_level: 5
+toc_max_heading_level: 4
 ---
 
 # 비동기 프로그래밍
@@ -29,6 +29,22 @@ void main() async {
 	await 실행할함수();
 }
 ```
+### then과 WhenComplete
+then은 오류가 있을 경우에 실행을 안하고 WhenComplete은 오류가 있을 경우에도 실행을 함.
+```dart 
+void main() async {
+  await futureAsync().then((value) {
+    print("Then"); // 출력 안됨
+  }).whenComplete(() {
+    print("WhenComplete"); // 출력
+  });
+}
+
+Future futureAsync() async {
+  return Future.error("error");
+}
+```
+
 ### ConnectionState
 FutureBuilder의 처리 상태에 따라서 어떤 조건을 넣고 수행해줄 수 있음.<br></br>
 
@@ -77,7 +93,7 @@ final results = await Future.wait(futures);
 ### Stream
 리스너를 생성해서 리스너가 리스닝을 하고 있는 동안 controller가 값을 넣어주면 함수가 실행됨. <br></br>
 이 때 return 되는 값들을 지속적으로 반환해줌.<br></br>
-![Stream](./img/Stream.png)
+![Stream](./img/stream.png)
 ```dart
 StreamBuilderBuilder<generic> {
 	stream: 실행할 함수
