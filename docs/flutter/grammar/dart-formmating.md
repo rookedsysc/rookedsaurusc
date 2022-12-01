@@ -40,3 +40,14 @@ int.parse( `String` )
 String ten = '10';
 print(int.parse(ten).runtimeType); // int 출력
 ```
+
+## Base64 Encoding 
+```dart
+// 어떻게 인코딩 할건지 정의
+Codec<String, String> stringToBase64 = utf8.fuse(base64);
+// 정의를 이용해서 rawString을 인코딩
+String base64EncodingText = stringToBase64.encode( String );
+```
+
+### Reference
+[Code Factory 중급](https://github.com/rookedsysc/Flutter-Study/blob/fd26885698cc828c6e2d8452d639b40ce1b44506/Project/lv2_actual/lib/user/view/login_screen.dart)
