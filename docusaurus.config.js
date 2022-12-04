@@ -13,16 +13,17 @@
 const config = {
   title: 'Rookedsysc\'s docs',
   tagline: 'Study Dart, Flutter, Swift, SwiftUI and other things',
-  url: 'https://rookedsysc_saurus.github.io',
+  url: 'https://rookedsaurusc.github.io',
   baseUrl: '/',
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'ignore',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'rookedsysc', // Usually your GitHub org/user name.
-  projectName: 'rookedsysc_saurus.github.io', // Usually your repo name.
+  projectName: 'rookedsaurusc', // Usually your repo name.
+  deploymentBranch: 'main',
 
   presets: [
     [
@@ -49,6 +50,11 @@ const config = {
       }),
     ],
   ],
+
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'kr'],
+  },
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
@@ -91,73 +97,73 @@ const config = {
       },
       footer: {
         style: 'dark',
-        links: [
-          {
-            title: 'Learn',
-            items: [
-              {
-                label: 'Style Guide',
-                to: 'docs/',
-              },
-              {
-                label: 'Second Doc',
-                to: 'docs/doc2',
-              },
-            ],
-          },
-          {
-            title: 'Community',
-            items: [
-              {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              },
-              {
-                label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
-              },
-              {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
-              {
-                label: 'Blog',
-                to: 'blog',
-              },
-              {
-                label: 'GitHub',
-                href: 'https://github.com/rookedsysc/rookedsysc_saurus.github.io',
-              },
-            ],
-          },
-          {
-            title: 'Legal',
-            // Please do not remove the privacy and terms, it's a legal requirement.
-            items: [
-              {
-                label: 'Privacy',
-                href: 'https://opensource.fb.com/legal/privacy/',
-              },
-              {
-                label: 'Terms',
-                href: 'https://opensource.fb.com/legal/terms/',
-              },
-              {
-                label: 'Data Policy',
-                href: 'https://opensource.fb.com/legal/data-policy/',
-              },
-              {
-                label: 'Cookie Policy',
-                href: 'https://opensource.fb.com/legal/cookie-policy/',
-              },
-            ],
-          },
-        ],
+        // links: [
+        //   {
+        //     title: 'Learn',
+        //     items: [
+        //       {
+        //         label: 'Style Guide',
+        //         to: 'docs/',
+        //       },
+        //       {
+        //         label: 'Second Doc',
+        //         to: 'docs/doc2',
+        //       },
+        //     ],
+        //   },
+        //   {
+        //     title: 'Community',
+        //     items: [
+        //       {
+        //         label: 'Stack Overflow',
+        //         href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+        //       },
+        //       {
+        //         label: 'Twitter',
+        //         href: 'https://twitter.com/docusaurus',
+        //       },
+        //       {
+        //         label: 'Discord',
+        //         href: 'https://discordapp.com/invite/docusaurus',
+        //       },
+        //     ],
+        //   },
+        //   {
+        //     title: 'More',
+        //     items: [
+        //       {
+        //         label: 'Blog',
+        //         to: 'blog',
+        //       },
+        //       {
+        //         label: 'GitHub',
+        //         href: 'https://github.com/rookedsysc/rookedsysc_saurus.github.io',
+        //       },
+        //     ],
+        //   },
+        //   {
+        //     title: 'Legal',
+        //     // Please do not remove the privacy and terms, it's a legal requirement.
+        //     items: [
+        //       {
+        //         label: 'Privacy',
+        //         href: 'https://opensource.fb.com/legal/privacy/',
+        //       },
+        //       {
+        //         label: 'Terms',
+        //         href: 'https://opensource.fb.com/legal/terms/',
+        //       },
+        //       {
+        //         label: 'Data Policy',
+        //         href: 'https://opensource.fb.com/legal/data-policy/',
+        //       },
+        //       {
+        //         label: 'Cookie Policy',
+        //         href: 'https://opensource.fb.com/legal/cookie-policy/',
+        //       },
+        //     ],
+        //   },
+        // ],
         logo: {
           alt: 'Meta Open Source Logo',
           // This default includes a positive & negative version, allowing for
@@ -168,6 +174,7 @@ const config = {
         // Please do not remove the credits, help to publicize Docusaurus :)
         copyright: `Copyright © ${new Date().getFullYear()} Meta Platforms, Inc. Built with Docusaurus.`,
       },
+      // code block 언어 추가
       prism: {
         theme: require('prism-react-renderer/themes/vsDark'),
         additionalLanguages: ['dart', 'bash'],
