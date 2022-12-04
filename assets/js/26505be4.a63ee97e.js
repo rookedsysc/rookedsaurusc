@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksaurus=self.webpackChunksaurus||[]).push([[4434],{6609:s=>{s.exports=JSON.parse('{"label":"\uacc4\ud68d","permalink":"/blog/tags/\uacc4\ud68d","allTagsPath":"/blog/tags","count":1}')}}]);

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksaurus=self.webpackChunksaurus||[]).push([[25],{2369:a=>{a.exports=JSON.parse('{"label":"Dart","permalink":"/kr/blog/tags/dart","allTagsPath":"/kr/blog/tags","count":1}')}}]);

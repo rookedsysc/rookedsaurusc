@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksaurus=self.webpackChunksaurus||[]).push([[3162],{1326:s=>{s.exports=JSON.parse('{"label":"docker","permalink":"/kr/blog/tags/docker","allTagsPath":"/kr/blog/tags","count":1}')}}]);

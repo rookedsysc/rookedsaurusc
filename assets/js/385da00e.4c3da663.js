@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksaurus=self.webpackChunksaurus||[]).push([[884],{532:e=>{e.exports=JSON.parse('{"title":"Widget","slug":"/category/widget","permalink":"/docs/category/widget","navigation":{"previous":{"title":"Pagination","permalink":"/docs/flutter/theory/pagination"},"next":{"title":"Scrollable Widget","permalink":"/docs/flutter/widget/scrollable-widget"}}}')}}]);

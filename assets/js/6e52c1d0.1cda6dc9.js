@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksaurus=self.webpackChunksaurus||[]).push([[9690],{1417:e=>{e.exports=JSON.parse('{"title":"Packeages","slug":"/category/packeages","permalink":"/docs/category/packeages","navigation":{"previous":{"title":"TabBar View","permalink":"/docs/flutter/widget/tab-bar-view"},"next":{"title":"Drift","permalink":"/docs/flutter/packages/drift"}}}')}}]);

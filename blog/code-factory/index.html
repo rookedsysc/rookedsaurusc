@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="blog-wrapper blog-post-page plugin-blog plugin-id-default">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v2.2.0">
+<title data-rh="true">Code Factory 중급 계획 | Rookedsysc&#x27;s docs</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://rookedsaurusc.github.io/blog/code-factory"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docusaurus_tag" content="default"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docsearch:docusaurus_tag" content="default"><meta data-rh="true" property="og:title" content="Code Factory 중급 계획 | Rookedsysc&#x27;s docs"><meta data-rh="true" name="description" content="강의 소개"><meta data-rh="true" property="og:description" content="강의 소개"><meta data-rh="true" property="og:type" content="article"><meta data-rh="true" property="article:published_time" content="2022-12-01T00:00:00.000Z"><meta data-rh="true" property="article:author" content="https://github.com/rookedsysc"><meta data-rh="true" property="article:tag" content="Flutter,Dart,Code Factory,강의,계획"><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://rookedsaurusc.github.io/blog/code-factory"><link data-rh="true" rel="alternate" href="https://rookedsaurusc.github.io/blog/code-factory" hreflang="en"><link data-rh="true" rel="alternate" href="https://rookedsaurusc.github.io/kr/blog/code-factory" hreflang="kr"><link data-rh="true" rel="alternate" href="https://rookedsaurusc.github.io/blog/code-factory" hreflang="x-default"><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="Rookedsysc&#39;s docs RSS Feed">
+<link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="Rookedsysc&#39;s docs Atom Feed"><link rel="stylesheet" href="/assets/css/styles.553fcbbc.css">
+<link rel="preload" href="/assets/js/runtime~main.878fb146.js" as="script">
+<link rel="preload" href="/assets/js/main.4bcd6f03.js" as="script">
+</head>
+<body class="navigation-with-keyboard">
+<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){var t=null;try{t=localStorage.getItem("theme")}catch(t){}return t}();t(null!==e?e:"light")}()</script><div id="__docusaurus">
+<div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#docusaurus_skipToContent_fallback">Skip to main content</a></div><nav class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/logo.svg" alt="My Meta Project Logo" class="themedImage_ToTc themedImage--light_HNdA"><img src="/img/logo.svg" alt="My Meta Project Logo" class="themedImage_ToTc themedImage--dark_i4oU"></div><b class="navbar__title text--truncate">Rookedsysc&#x27;s docs</b></a><a class="navbar__item navbar__link" sidebarid="flutter" href="/docs/flutter/what-is-flutter">Flutter</a><a class="navbar__item navbar__link" sidebarid="tutorial" href="/docs/intro">Tutorial</a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/blog">Blog</a></div><div class="navbar__items navbar__items--right"><a href="https://github.com/facebook/docusaurus" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="Switch between dark and light mode (currently light mode)" aria-label="Switch between dark and light mode (currently light mode)" aria-live="polite"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="searchBox_ZlJk"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0"><div class="container margin-vert--lg"><div class="row"><aside class="col col--3"><nav class="sidebar_re4s thin-scrollbar" aria-label="Blog recent posts navigation"><div class="sidebarItemTitle_pO2u margin-bottom--md">Recent posts</div><ul class="sidebarItemList_Yudw clean-list"><li class="sidebarItem__DBe"><a aria-current="page" class="sidebarItemLink_mo7H sidebarItemLinkActive_I1ZP" href="/blog/code-factory">Code Factory 중급 계획</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2022/12/01/2022/12/hive">hive</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/regex">정규 표현식 (Regex)</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/callback">Call Back이란?</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/inmemory-db">In-Memory Database</a></li></ul></nav></aside><main class="col col--7" itemscope="" itemtype="http://schema.org/Blog"><article itemprop="blogPost" itemscope="" itemtype="http://schema.org/BlogPosting"><header><h1 class="title_f1Hy" itemprop="headline">Code Factory 중급 계획</h1><div class="container_mt6G margin-vert--md"><time datetime="2022-12-01T00:00:00.000Z" itemprop="datePublished">December 1, 2022</time> · <!-- -->6 min read</div><div class="margin-top--md margin-bottom--sm row"><div class="col col--6 authorCol_Hf19"><div class="avatar margin-bottom--sm"><a href="https://github.com/rookedsysc" target="_blank" rel="noopener noreferrer" class="avatar__photo-link"><img class="avatar__photo" src="https://github.com/rookedsysc.png" alt="Rookedsysc"></a><div class="avatar__intro" itemprop="author" itemscope="" itemtype="https://schema.org/Person"><div class="avatar__name"><a href="https://github.com/rookedsysc" target="_blank" rel="noopener noreferrer" itemprop="url"><span itemprop="name">Rookedsysc</span></a></div><small class="avatar__subtitle" itemprop="description">Just Human</small></div></div></div></div></header><div id="post-content" class="markdown" itemprop="articleBody"><h2 class="anchor anchorWithStickyNavbar_LWe7" id="강의-소개">강의 소개<a class="hash-link" href="#강의-소개" title="Direct link to heading">​</a></h2><p>강의 소개(04분)<br></p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="기본-ui-작업하기-45분">기본 UI 작업하기 (45분)<a class="hash-link" href="#기본-ui-작업하기-45분" title="Direct link to heading">​</a></h2><p>색상 상수 지정하기(08분)<br>
+텍스트필드 디자인하기(17분)<br>
+UI 배치하기(15분)<br>
+UI 마무리하기(05분)<br></p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="authentication-인증-시스템-1시간-33분">Authentication (인증 시스템) (1시간 33분)<a class="hash-link" href="#authentication-인증-시스템-1시간-33분" title="Direct link to heading">​</a></h2><p>Token과 Session 이론(24분)<br>
+JWT 토큰 이론(08분)<br>
+Refresh 토큰과 Access 토큰(02분)<br>
+서버 세팅하기(07분)<br>
+서버 실행 주의사항(01분)<br>
+Postman에서 인증 URL 테스트하기 (login)(07분)<br>
+Postman에서 인증 URL 테스트하기 (token)(05분)<br>
+Dio로 Auth API 요청해보기(15분)<br>
+간단한 로그인 시스템 만들어보기(06분)<br>
+SplashScreen 구현해보기(18분)<br></p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="pagination-페이지네이션">Pagination (페이지네이션)<a class="hash-link" href="#pagination-페이지네이션" title="Direct link to heading">​</a></h2><p>AppBar와 TabBar 만들기(11분)<br>
+TabBarView 생성하기(09분)<br>
+RestaurantCard 작업하기(18분)<br>
+쉬어가기 - Refresh Token 확인 로직(07분)<br>
+Pagination 이론(20분)<br>
+Restaurant Pagination Postman으로 작업해보기(16분)<br>
+Restaurant Pagination 요청해보기(17분)<br></p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="데이터-모델링">데이터 모델링<a class="hash-link" href="#데이터-모델링" title="Direct link to heading">​</a></h2><p>JSON 데이터 매핑하기(10분)<br>
+Factory 생성자 이론(05분)<br>
+fromJson 생성자 만들어보기(05분)<br>
+fromModel 생성자 만들어보기(03분)<br></p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="restaurantdetailscreen-작업하기">RestaurantDetailScreen 작업하기<a class="hash-link" href="#restaurantdetailscreen-작업하기" title="Direct link to heading">​</a></h2><p>레스토랑 상세페이지 작업하기(09분)<br>
+레스토랑 상세 URL Postman에서 테스트하기(06분)<br>
+ProductCard 작업하기(11분)<br>
+SliverList 구현하기(05분)<br>
+레스토랑 상세요청 구현하기(18분)<br>
+ProductCard 매핑하기(08분)<br></p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="jsonserializable과-retrofit-그리고-dio-interceptor">JsonSerializable과 Retrofit 그리고 Dio Interceptor<a class="hash-link" href="#jsonserializable과-retrofit-그리고-dio-interceptor" title="Direct link to heading">​</a></h2><p>RestaurantModel에 JsonSerializable 적용해보기(02분)<br>
+RestaurantDetailModel에 JsonSerializable 적용해보기(09분)<br>
+Restaurant Repository 구현하기(17분)<br>
+Dio onRequest Interceptor 작업하기(02분)<br>
+Dio onError Interceptor 작업하기(21분)<br>
+Dio onResponse Interceptor 작업하기(02분)<br>
+Restaurant Pagination API 작업하기(15분)<br>
+Pagination UI에 적용해보기(04분)<br></p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="riverpod을-이용한-상태관리">Riverpod을 이용한 상태관리<a class="hash-link" href="#riverpod을-이용한-상태관리" title="Direct link to heading">​</a></h2><p>Riverpod 소개(15분)<br>
+Riverpod 이론(07분)<br>
+StateProvider 실습(02분)<br>
+StateNotifierProvider 실습(02분)<br>
+FutureProvider 실습(08분)<br>
+StreamProvider 실습(04분)<br>
+Family Modifier 실습(06분)<br>
+AutoDispose Modifier 실습(05분)<br>
+Listen 함수 실습(13분)<br>
+Select 실습(14분)<br>
+Provider안에 Provider 사용하기(14분)<br>
+ProviderObserver 실습(08분)<br></p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="상태관리-프로젝트에-적용하기">상태관리 프로젝트에 적용하기<a class="hash-link" href="#상태관리-프로젝트에-적용하기" title="Direct link to heading">​</a></h2><p>Dio에 Provider 적용하기(11분)<br>
+RestaurantRepositoryProvider 작업하기(06분)<br>
+RestaurantProvider 작업하기(13분)<br>
+CursorPagination 상태 작업하기(14분)<br>
+Pagination Params 추가하기(11분)<br>
+Restaurant Pagination - 1(8분)<br>
+Restaurant Pagination - 2(10분)<br>
+Restaurant Pagination - 3(3분)<br>
+Restaurant Pagination - 4(14분)<br>
+Restaurant Pagination - 5(6분)<br>
+완성된 Pagination 로직 실행해보기(09분)<br>
+FetchMore 로딩 UI 작업하기(03분)<br></p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="캐시관리-및-공유하기">캐시관리 및 공유하기<a class="hash-link" href="#캐시관리-및-공유하기" title="Direct link to heading">​</a></h2><p>Cache에서 데이터 가져오기(08분)<br>
+RestaurantDetail 캐싱하기(02분)<br>
+Hero 위젯(04분)<br>
+Skeleton 사용하기(06분)<br></p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="pagination-일반화하기">Pagination 일반화하기<a class="hash-link" href="#pagination-일반화하기" title="Direct link to heading">​</a></h2><p>RatingCardHeader 만들기(13분)<br>
+RatingCardBody 작업하기(02분)<br>
+RatingCardImage 작업하기(07분)<br>
+RatingModel 작업하기(06분)<br>
+RestaurantRatingRepository 작업하기(06분)<br>
+RestaurantRatingProvider 초기작업(05분)<br>
+Interface로 Repository 일반화하기(02분)<br>
+Pagination 모델 일반화하기(08분)<br>
+Rating Pagination(10분)<br>
+RatingsPagination 렌더링하기(08분)<br>
+RatingPagination FetchMore 적용하기(05분)<br></p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="고급-캐시관리">고급 캐시관리<a class="hash-link" href="#고급-캐시관리" title="Direct link to heading">​</a></h2><p>Product Pagination 세팅하기(13분)<br>
+PaginationListView 위젯 작업하기(18분)<br>
+Product Tab Pagination(04분)<br>
+존재하지않는 데이터 캐시에 입력하기(10분)<br></p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="gorouter-이론">GoRouter 이론<a class="hash-link" href="#gorouter-이론" title="Direct link to heading">​</a></h2><p>프로젝트 세팅하기(04분)<br>
+GoRouter 세팅하기(05분)<br>
+Go 함수(05분)<br>
+GoNamed 함수(05분)<br>
+Pop 함수(01분)<br>
+ErrorScreen(03분)<br>
+Redirect와 Refresh 로직(25분)<br>
+Redirection 테스트하기(08분)<br></p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="gorouter-프로젝트에-적용하기">GoRouter 프로젝트에 적용하기<a class="hash-link" href="#gorouter-프로젝트에-적용하기" title="Direct link to heading">​</a></h2><p>401또는 403에러날때 대처법FileIcon(01분)<br>
+미만UserMeRepository 생성하기(05분)<br>
+Get Me API 작업하기(06분)<br>
+Get Me API 보완(01분)<br>
+미만Login과 Token Refresh Repository(07분)<br>
+UserMeProvider 마무리하기(07분)<br>
+AuthProvider 작업하기(10분)<br>
+GoRouter 적용하기(09분)<br>
+Authentication 마무리하기(07분)<br>
+일반 Navigation에서 GoRouter로 전환하기(05분)<br>
+RefreshToken 만료되면 로그아웃(07분)<br></p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="optimistic-response">Optimistic Response<a class="hash-link" href="#optimistic-response" title="Direct link to heading">​</a></h2><p>Postman API 테스트(06분)<br>
+BasketProvider 작업하기(16분)<br>
+장바구니 기능 적용하기(09분)<br>
+Optimistic Response(10분)<br></p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="장바구니-스크린">장바구니 스크린<a class="hash-link" href="#장바구니-스크린" title="Direct link to heading">​</a></h2><p>장바구니 스크린(15분)<br>
+장바구니 UI 마무리하기(13분)<br>
+PostOrder API Postman 작업하기(04분)<br>
+OrderModel 생성하기(07분)<br>
+OrderRepository 작업하기(05분)<br>
+OrderProvider 작업하기(11분)<br>
+결제함수 마무리하기(06분)<br></p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="주문-탭">주문 탭<a class="hash-link" href="#주문-탭" title="Direct link to heading">​</a></h2><p>OrderCard 작업하기(11분)<br>
+OrderPagination 작업하기(04분)<br>
+RefreshIndicator 작업하기(04분)<br></p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="debounce와-throttle">Debounce와 Throttle<a class="hash-link" href="#debounce와-throttle" title="Direct link to heading">​</a></h2><p>이론(05분)<br>
+Throttle이 필요한 부분(03분)<br>
+Throttling 적용하기(10분)<br>
+Debounce 목표(01분)<br>
+Debounce 적용하기(04분)<br>
+다음강의FileIcon(01분)<br></p></div><footer class="row docusaurus-mt-lg blogPostFooterDetailsFull_mRVl"><div class="col"><b>Tags:</b><ul class="tags_jXut padding--none margin-left--sm"><li class="tag_QGVx"><a class="tag_zVej tagRegular_sFm0" href="/blog/tags/flutter">Flutter</a></li><li class="tag_QGVx"><a class="tag_zVej tagRegular_sFm0" href="/blog/tags/dart">Dart</a></li><li class="tag_QGVx"><a class="tag_zVej tagRegular_sFm0" href="/blog/tags/code-factory">Code Factory</a></li><li class="tag_QGVx"><a class="tag_zVej tagRegular_sFm0" href="/blog/tags/강의">강의</a></li><li class="tag_QGVx"><a class="tag_zVej tagRegular_sFm0" href="/blog/tags/계획">계획</a></li></ul></div><div class="col margin-top--sm"><a href="https://github.com/rookedsysc/rookedsysc_saurus.github.io/tree/main/packages/create-docusaurus/templates/shared/blog/2022/12/2022-12-01-code-factory.mdx" target="_blank" rel="noreferrer noopener" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div></footer></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Blog post page navigation"><a class="pagination-nav__link pagination-nav__link--next" href="/blog/2022/12/01/2022/12/hive"><div class="pagination-nav__sublabel">Older Post</div><div class="pagination-nav__label">hive</div></a></nav></main><div class="col col--2"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#강의-소개" class="table-of-contents__link toc-highlight">강의 소개</a></li><li><a href="#기본-ui-작업하기-45분" class="table-of-contents__link toc-highlight">기본 UI 작업하기 (45분)</a></li><li><a href="#authentication-인증-시스템-1시간-33분" class="table-of-contents__link toc-highlight">Authentication (인증 시스템) (1시간 33분)</a></li><li><a href="#pagination-페이지네이션" class="table-of-contents__link toc-highlight">Pagination (페이지네이션)</a></li><li><a href="#데이터-모델링" class="table-of-contents__link toc-highlight">데이터 모델링</a></li><li><a href="#restaurantdetailscreen-작업하기" class="table-of-contents__link toc-highlight">RestaurantDetailScreen 작업하기</a></li><li><a href="#jsonserializable과-retrofit-그리고-dio-interceptor" class="table-of-contents__link toc-highlight">JsonSerializable과 Retrofit 그리고 Dio Interceptor</a></li><li><a href="#riverpod을-이용한-상태관리" class="table-of-contents__link toc-highlight">Riverpod을 이용한 상태관리</a></li><li><a href="#상태관리-프로젝트에-적용하기" class="table-of-contents__link toc-highlight">상태관리 프로젝트에 적용하기</a></li><li><a href="#캐시관리-및-공유하기" class="table-of-contents__link toc-highlight">캐시관리 및 공유하기</a></li><li><a href="#pagination-일반화하기" class="table-of-contents__link toc-highlight">Pagination 일반화하기</a></li><li><a href="#고급-캐시관리" class="table-of-contents__link toc-highlight">고급 캐시관리</a></li><li><a href="#gorouter-이론" class="table-of-contents__link toc-highlight">GoRouter 이론</a></li><li><a href="#gorouter-프로젝트에-적용하기" class="table-of-contents__link toc-highlight">GoRouter 프로젝트에 적용하기</a></li><li><a href="#optimistic-response" class="table-of-contents__link toc-highlight">Optimistic Response</a></li><li><a href="#장바구니-스크린" class="table-of-contents__link toc-highlight">장바구니 스크린</a></li><li><a href="#주문-탭" class="table-of-contents__link toc-highlight">주문 탭</a></li><li><a href="#debounce와-throttle" class="table-of-contents__link toc-highlight">Debounce와 Throttle</a></li></ul></div></div></div></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="margin-bottom--sm"><a href="https://opensource.fb.com" rel="noopener noreferrer" class="footerLogoLink_BH7S"><img src="/img/meta_opensource_logo_negative.svg" alt="Meta Open Source Logo" class="themedImage_ToTc themedImage--light_HNdA footer__logo"><img src="/img/meta_opensource_logo_negative.svg" alt="Meta Open Source Logo" class="themedImage_ToTc themedImage--dark_i4oU footer__logo"></a></div><div class="footer__copyright">Copyright © 2022 Meta Platforms, Inc. Built with Docusaurus.</div></div></div></footer></div>
+<script src="/assets/js/runtime~main.878fb146.js"></script>
+<script src="/assets/js/main.4bcd6f03.js"></script>
+</body>
+</html>
