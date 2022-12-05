@@ -4,7 +4,9 @@ toc_max_heading_level: 4
 ---
 
 # 함수형 프로그래밍
-## map 
+
+## list
+### map 
 ```dart 
 .map((x) => return);
 .map((x){
@@ -12,25 +14,42 @@ toc_max_heading_level: 4
 };
 ```
 [map 참조](https://github.com/rookedsysc/Flutter-Study/blob/main/Grammar/functionalProgramming/map.dart)
-## reduce 
+### reduce 
 reduce 사용시 parameter의 data tyep과 return result의 data type이 같아야 함.<br></br>
 배열의 끝까지 loop 발생, 첫 번째는 prev + next 해주고 그 이후로는 total + next 해줌.
 ```dart
 .reduce((prev, next) => code);
 ```
-### fold 
+#### fold 
 reduce와는 다르게 return tyep과 parameter type이 같지 않아도 됨.<br></br>
 대신, 선언해줄 때 return type을 설정해줘야 하며 (prev, next)전에 첫 번째 parameter를 받고 이를 첫 번째 계산값으로 사용함.<br></br>
 ```dart
 .fold<returnType>(0, (prev, next) => prev + next);
 ```
 [reduce and fold 참조](https://github.com/rookedsysc/Flutter-Study/blob/main/Grammar/functionalProgramming/reduce.dart)
-## where
+### where
 where((x) => 조건); 조건이 true인 값만 return 해줌.<br></br>
 ```dart
 where((x) => 조건); 
 ```
 [where 참조](https://github.com/rookedsysc/Flutter-Study/blob/main/Grammar/functionalProgramming/where.dart)
+## enum
+### values
+enum의 [values](https://api.flutter.dev/flutter/material/CollapseMode/values-constant.html)들을 반환해준다.
+```dart 
+void main() {
+  print(PriceType.values); // [ PriceType.fixed, PriceType.variable ]
+
+  // values.name들 중에서 'fixed'와 같은 첫 번째 값을 찾아서 반환
+  print(PriceType.values.firstWhere((e) => e.name == 'fixed')); 
+}
+
+enum PriceType {
+  fixed,
+  variable,
+}
+```
+[source code](https://github.com/rookedsysc/Flutter-Study/blob/main/Grammar/values_test.dart)
 
 ## Spread operator(...) 
 List 이어주는 기능(?)<br></br> 

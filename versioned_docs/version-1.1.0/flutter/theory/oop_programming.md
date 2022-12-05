@@ -1,11 +1,11 @@
 ---
 sidebar_position: 2
 ---
-## 객체지향 프로그래밍
+# 객체지향 프로그래밍
 객체지향 프로그래밍(OOP, Object Oriented Programming)이란? <br>
 Class의 인스턴스를 생성해서 할당을 해주면 해당하는 인스턴스를 무한히 생성가능.<br>
 ![](./img/oop_programming/dart_class.png)
-### 객체지향 프로그래밍(OOP)인 이유
+## 객체지향 프로그래밍(OOP)인 이유
 class를 기본적으로 생성해주면 hashCode, runtimeType, toString, noSuchMethod 등이 기본적으로 할당이 됨. 이는 class가 생성될 때 **모든 class는 최상위 부모 class로 Object를 가지고 있기 때문**. 그리고 이 Object의 기본적으로 제공이 되는 기능이 저 4가지 기능임.
 ```dart
 void main() {
@@ -21,7 +21,7 @@ void main() {
 class test entends Object{}
 ``` 
 
-### class 기본형
+## class 기본형
 ```dart
 void main() {
   Idol blackPink = Idol(
@@ -68,9 +68,9 @@ class Idol {
 }
 ```
 
-#### Constructor
+### Constructor
 
-##### Named Constructor 
+#### Named Constructor 
 
 ```dart
 class Employee {
@@ -90,7 +90,7 @@ main() {
 }
 ```
 
-##### Factory Contsructor
+#### Factory Contsructor
 https://stackoverflow.com/questions/60133252/what-is-the-purpose-of-a-factory-method-in-flutter-dart
 ```dart
 class DBHelper{
@@ -101,7 +101,7 @@ class DBHelper{
 ```
 다음 코드에서 factory 키워드를 DBHelper 메서드 앞에서 써놓으면 DBHelper 메서드의 인스턴스는 딱 한 번만 생성될 수 있음.<br>
 
-#### immutable 프로그래밍: final
+### immutable 프로그래밍: final
 한 번 값을 선언하고 나면 값을 변형할 수 없도록 해줌.<br>
 ```dart
 void main() {
@@ -129,7 +129,7 @@ class Idol {
   Idol(this.name, this.members);
 }
 ```
-#### immutable 프로그래밍: const
+### immutable 프로그래밍: const
 ```dart
 void main() {
   Idol blackPink = const Idol( // const를 사용할 때는 값을 선언하는 부분에도 const로 변수를 만들어줘야 함
@@ -155,7 +155,7 @@ class Idol {
   const Idol(this.name, this.members);
 }
 ```
-##### const immutable class의 특수성
+#### const immutable class의 특수성
 같은 class의 인스턴스 프로퍼티를 비교할 때 const로 선언한 class 인스턴스끼리는 값이 같으면 같다고 return 해줌.
 ```dart
 void main() {
@@ -193,7 +193,7 @@ class Idol {
   const Idol(this.name, this.members);
 }
 ```
-### Getter와 Setter
+## Getter와 Setter
 ```dart
 자료형 get getterName {
 	code
@@ -202,19 +202,19 @@ class Idol {
 와 같은 형태로 사용하며, setter는 잘 안씀.<br>
 데이터를 가져와서 { code }를 수행해줌.
 [Getter와 Setter](https://github.com/rookedsysc/Flutter-Study/commit/a5199f9ec1fe5573748401023b75d355ecffa982) 
-### Inheritance (상속)
+## Inheritance (상속)
 [Ingeritance](https://github.com/rookedsysc/Flutter-Study/commit/3b1f33e19fa8f891d0be56014fc590637ab2ef96)
-### Override
+## Override
 부모 클래스에 있는 method와 같은 시그니처의 함수를 만들어서 덮어쓰기(override)해줄 수 있음.<br>
 [Override](https://github.com/rookedsysc/Flutter-Study/commit/2d7f4599e00b3c21c360d170b82b6dbe3b0d13bf)
-### static
+## static
 class 내부의 method나 property에 static을 붙여서 사용하며, 이는 instance가 아닌 class에 값이 귀속됨. 즉, 해당 class에 static method나 property를 귀속해주면 해당 class를 상속받은 모든 자식 class 는 해당 static의 값을 귀속받음.<br>
 [static](https://github.com/rookedsysc/Flutter-Study/commit/8dc1037da3d001a3c20c5d8d43c823e52aa476d8)
-### Interface와 abstract
+## Interface와 abstract
 어떤 특수한 구조를 강제하기 위해서 사용하며 swift의 protocol이랑 비슷함. <br>
 Interface 앞에 **abstract** 키워드를 사용해서 해당 Interface를 통해서 instance를 생성할 수 없도록 해줌.<br>
 [Interface와 abstract](https://github.com/rookedsysc/Flutter-Study/commit/4c324c49d1449f66c87cab17953d9dd04a8c5a5e)
-### Generic (타입추론)
+## Generic (타입추론)
 class에 타입을 외부에서 받을 때 사용하며 외부에서 타입을 지정해줌.<br>
 아래는 기본형 👇
 ```dart

@@ -29,7 +29,7 @@ SingleChildScrollView(
 </TabItem>
 <TabItem value="실행결과">
 <div style={{textAlign: "center"}}>
-<img src={require("./img/scrollable-widget/render_simple.gif").default}/>
+<img src={require("./scrollable-widget/img/render_simple.gif").default}/>
 </div>
 </TabItem>
 </Tabs>
@@ -56,7 +56,7 @@ SingleChildScrollView(
 ```
 
 <div style={{textAlign: 'center'}}>
-<img src={require("./img/scrollable-widget/single_view_scroll.gif").default}/>
+<img src={require("./scrollable-widget/img/single_view_scroll.gif").default}/>
 </div>
 
 #### PageScroll 
@@ -68,12 +68,12 @@ physics: PageScrollPhysics(),
 <Tabs>
 <TabItem value="적용 전">
 <div style={{textAlign: "center"}}>
-<img src={require("./img/scrollable-widget/before_page_scroll.gif").default} style={{width:400}}/>
+<img src={require("./scrollable-widget/img/before_page_scroll.gif").default} style={{width:400}}/>
 </div>
 </TabItem>
 <TabItem value="적용 후">
 <div style={{textAlign: "center"}}>
-<img src={require("./img/scrollable-widget/after_page_scroll.gif").default} style={{width:400}}/>
+<img src={require("./scrollable-widget/img/after_page_scroll.gif").default} style={{width:400}}/>
 </div>
 </TabItem>
 </Tabs>
@@ -99,7 +99,7 @@ SingleChildScrollView(
 ```
 
 <div style={{textAlign: "center"}}>
-<img src={require("./img/scrollable-widget/render_clip.gif").default} style={{width:400}}/>
+<img src={require("./scrollable-widget/img/render_clip.gif").default} style={{width:400}}/>
 </div>
 
 ## List View
@@ -112,13 +112,13 @@ ListView (
 ```
 
 <div style={{textAlign: "center"}}>
-<img src={require("./img/scrollable-widget/list_view.gif").default} style={{width:400}}/>
+<img src={require("./scrollable-widget/img/list_view.gif").default} style={{width:400}}/>
 </div>
 
 
 ### Builder: Build되는 View만 생성
 Build 되는 View만 생성하므로 성능 이슈 안정화.<br></br>
-![](./img/scrollable-widget/list_view_builder.gif)
+![](./scrollable-widget/img/list_view_builder.gif)
 ```dart
 ListView.builder(
   itemCount: 100,
@@ -150,7 +150,7 @@ ListView.separated(
 ```
 
 <div style={{textAlign: "center"}}>
-<img src={require("./img/scrollable-widget/seperate_render.gif").default} style={{width: 400}}/>
+<img src={require("./scrollable-widget/img/seperate_render.gif").default} style={{width: 400}}/>
 </div>
 
 
@@ -174,7 +174,7 @@ ListTile(
 </TabItem>
 <TabItem value="실행결과">
     <div style={{textAlign: "center"}}>
-    <img src={require("./img/scrollable-widget/spread_list_tile.gif").default} style={{width:300}}/>
+    <img src={require("./scrollable-widget/img/spread_list_tile.gif").default} style={{width:300}}/>
     </div>
 </TabItem>
 </Tabs>
@@ -202,7 +202,7 @@ GridView.count(
 );
 ```
 
-![](./img/scrollable-widget/render_count.gif)
+![](./scrollable-widget/img/render_count.gif)
 
 
 #### AxisSpacing
@@ -234,7 +234,7 @@ gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
 )
 ```
 
-![](./img/scrollable-widget/render_max_extent.gif)
+![](./scrollable-widget/img/render_max_extent.gif)
 
 
 ## Reorderable List View 
@@ -278,7 +278,7 @@ yellow : 2 oldIndex -> 0 newIndex <br></br>
 [yellow, red, orange] <br></br>
 
 
-![](./img/scrollable-widget/reorderable.gif)
+![](./scrollable-widget/img/reorderable.gif)
 
 
 ## Custom Scroll View
@@ -380,13 +380,13 @@ SliverAppBar(
 <TabItem value="stretch">
 <div style={{textAlign: "center"}}>
 stretch_false / stretch_true<br></br>
-<img src={require("./img/scrollable-widget/stretch_false.gif").default} style={{width: 200}}/>
-<img src={require("./img/scrollable-widget/stretch_true.gif").default} style={{width: 200}}/>
+<img src={require("./scrollable-widget/img/stretch_false.gif").default} style={{width: 200}}/>
+<img src={require("./scrollable-widget/img/stretch_true.gif").default} style={{width: 200}}/>
 </div>
 </TabItem>
 <TabItem value="flexible space">
 <div style={{textAlign: "center"}}>
-<img src={require("./img/scrollable-widget/app_flexible_space.gif").default} style={{width: 400}}/>
+<img src={require("./scrollable-widget/img/app_flexible_space.gif").default} style={{width: 400}}/>
 </div> 
 </TabItem>
 </Tabs>
@@ -421,7 +421,7 @@ SliverPersistentHeader(
 </TabItem>
 <TabItem value="실행화면">
 <div style={{textAlign: "center"}}>
-<img src={require("./img/scrollable-widget/render_header.gif").default} style={{width: 400}}/>
+<img src={require("./scrollable-widget/img/render_header.gif").default} style={{width: 400}}/>
 </div>
 </TabItem>
 </Tabs>
@@ -515,7 +515,7 @@ Scrollbar(
 </TabItem>
 <TabItem value="실행결과">
 <div style={{textAlign: "center"}}>
-<img src={require("./img/scrollable-widget/scroll_bar.gif").default} style={{width: 400}}/>
+<img src={require("./scrollable-widget/img/scroll_bar.gif").default} style={{width: 400}}/>
 </div>
 </TabItem>
 </Tabs>
@@ -548,7 +548,7 @@ RefreshIndicator(
 </TabItem>
 <TabItem value="실행결과">
 <div style={{textAlign: "center"}}>
-<img src={require("./img/scrollable-widget/refresh.gif").default} style={{width: 400}}/>
+<img src={require("./scrollable-widget/img/refresh.gif").default} style={{width: 400}}/>
 </div>
 </TabItem>
 </Tabs>
