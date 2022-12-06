@@ -86,10 +86,10 @@ const config = {
           
 
 
-          {to: 'blog', label: 'Blog', position: 'left'},
+          {to: 'blog', label: 'Blog', position: 'right'},
           // Please keep GitHub link to the right for consistency.
           {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/rookedsysc/',
             label: 'GitHub',
             position: 'right',
           },

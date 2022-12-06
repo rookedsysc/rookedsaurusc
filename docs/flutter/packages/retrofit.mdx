@@ -1,0 +1,85 @@
+---
+sidebar_position: 3
+toc_max_heading_level: 4
+---
+
+# Retrofit 
+
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+
+`API 요청부터 모델화 하는 과정까지 전부 다 자동화를 해보자!`라는 생각으로 만들어진 Package이다. <br></br>
+
+## Example
+기존에 Dio를 사용해서 API를 요청하고 모델화를 통해서 사용하는 방법은 다음과 같았다.
+
+<Tabs>
+<TabItem value="API 요청">
+
+```dart
+final accessToken = await storage.read(key: ACCESS_TOKEN_KEY);
+
+final resp = await dio.get(
+  'http://$ip/restaurant/$id',
+  options: Options(headers: {
+    'authorization': 'Bearer $accessToken',
+  }),
+);
+```
+
+</TabItem>
+<TabItem value="모델화">
+
+```dart 
+FutureBuilder<Map<String, dynamic>>(
+  future: getRestaurantDetail(),
+    builder: (_, AsyncSnapshot<RestaurantDetailModel> snapshot) {
+
+      if(!snapshot.hasData) {
+        return const Center(child: CircularProgressIndicator());
+      }
+
+      // 모델화 하는 부분 
+      final item = RestaurantDetailModel.fromJson(snapshot.data!);
+    }
+)
+```
+
+</TabItem>
+</Tabs>
+
+API 요청부터 데이터 모델화까지의 일련의 과정들을 한 번에 처리해줄 수 있는 게 retrofit이다.
+
+### retrofit 사용
+
+#### abstract class 생성
+
+```dart
+// hide Headers는 retrofit의 Headers와 충돌을 피하기 위함
+import 'package:dio/dio.dart' hide Headers;
+import 'package:retrofit/retrofit.dart';
+
+// code generation을 해줄거기 때문에 part 사용
+part 'restaurant_repository.g.dart';
+
+// 인스턴스화가 되지 않게 abstract로 선언
+@RestApi()
+abstract class RestaurantRepository {
+  // factory constuctor는 (=)을 사용해서 함수 Body를 지정해줄 수 있음
+  // 함수 Body를 Generate될 _RestaurantRepository로 지정함
+  factory RestaurantRepository(Dio dio, {String baseUrl/*http://$ip/restaurant*/}) 
+  = _RestaurantRepository;
+
+  // http://$ip/restaurant/{id}
+  @GET('/{id}')
+  @Headers({
+    'authorization': 'Bearer ACCESS_TOKEN',
+  })
+  Future<RestaurantDetailModel> getRestaurantDetail({
+    // URL path segment(url 변수)에 넣어 줄 값을 Name parameter로 지정 
+    @Path('id') required String id,
+  });
+}
+```
