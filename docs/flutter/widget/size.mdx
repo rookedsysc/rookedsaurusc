@@ -1,0 +1,43 @@
+---
+sidebar_position: 0
+toc_max_heading_level: 4
+---
+
+# 크기 구하기 TIP
+
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+
+## kToolbarHeight
+Appbar의 사이즈를 구함.
+```dart
+margin: EdgeInsets.only( // (1)
+                top: kToolbarHeight),
+```
+
+<Tabs>
+<TabItem value="적용 전">
+<div style={{textAlign: "center"}}>
+<img src={require("./img/size/k_tool_bar_before.png").default} style={{width: 300}}/>
+</div>
+</TabItem>
+<TabItem value="적용 후">
+<div style={{textAlign: "center"}}>
+<img src={require("./img/size/k_tool_bar_after.png").default} style={{width: 300}}/>
+</div>
+</TabItem>
+</Tabs>
+
+## 화면 전체 사이즈
+```dart
+MediaQuery.of(context).size.width // 가로
+MediaQuery.of(context).size.height // 세로
+```
+
+## 키보드 사이즈 
+여기에다가 높이 더 해주면 키보드 올라오면 키보드 크기만큼 높이 올라감.
+```dart
+final bottomInsets = MediaQuery.of(context).viewInsets.bottom;
+```
