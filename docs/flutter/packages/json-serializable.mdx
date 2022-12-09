@@ -1,0 +1,173 @@
+---
+sidebar_position: 4
+toc_max_heading_level: 4
+---
+
+# Json Serializable
+
+## 기존의 Json Data를 Dart 모델화 하는 방법
+
+만약에 다음과 같은 API로 부터 데이터를 받아와서 모델화 한다고 가정을 해본다면
+
+<div style={{textAlign: "center"}}>
+<img src={require("./img/json-serializable/json_serializable_post_man.png").default} />
+</div>
+
+```dart title="restaurant_model.dart"
+enum RestaurantPriceRange { expensive, medium, cheap }
+
+const ip = '127.0.0.1';
+
+class RestaurantModel {
+  final String id;
+  final String name;
+  final String thumbUrl;
+  final List<String> tags;
+  final RestaurantPriceRange priceRange;
+  final double ratings;
+  final int ratingsCount;
+  final int deliveryTime;
+  final int deliveryFee;
+
+  RestaurantModel({
+    required this.id,
+    required this.name,
+    required this.thumbUrl,
+    required this.tags,
+    required this.priceRange,
+    required this.ratings,
+    required this.ratingsCount,
+    required this.deliveryTime,
+    required this.deliveryFee,
+  });
+
+  factory RestaurantModel.fromJson({
+    required Map<String, dynamic> json,
+  }) {
+    return RestaurantModel(
+      id: json['id'],
+      name: json['name'],
+      // http://127.0.0.1/img/떡볶이/떡볶이.jpg
+      thumbUrl: 'http://$ip/${json['thumbUrl']}',
+      // json['tags']를 List<String>으로 변환
+      tags: List<String>.from(json['tags']),
+      priceRange: RestaurantPriceRange.values
+          .firstWhere((e) => e.name == json['priceRange']),
+      ratings: json['ratings'],
+      ratingsCount: json['ratingsCount'],
+      deliveryTime: json['deliveryTime'],
+      deliveryFee: json['deliveryFee'],
+    );
+  }
+}
+```
+
+와 같이 코드를 작성했었다. 하지만 이러한 작업은 프로그래머 입장에서 굉장히 반복적이다. 그래서 이러한 방식으로 Json Data를 Dart 모델로 변환하는 작업을 직접 해주는 라이브러리가 있다.
+
+## Json Serializable
+### import
+json serializable은 다음과 같은 dependencies가 필요하다 build_runner를 통해서 code generation을 해주기 때문이다.
+```yaml
+dependencies:
+  json_annotation: ^4.7.0
+
+dev_dependencies:
+  build_runner: ^2.0.0
+  json_serializable: ^6.0.0
+```
+
+### Json Serializable을 통한 모델링
+기존의 함수에다가 `@JsonSerializable()` annotation을 추가해주고 
+```bash
+flutter pub run build_runner build
+```
+을 실행해주면 된다. 이 때 주의 할 점이 있는데 ip와 같은 인자는 변환을 해서 넣어줘야 한다 이럴 때 사용할 수 있는게 `@JsonKey()`이다.  
+변환을 원하는 인자 위에 `@JsonKey()`를 추가해주고 `fromJson`, `toJson` 변수에다가 callback 함수를 넣어주면 해당하는 인자를 변수로 받아와서 변환을 한 후 다시 리턴을 해주도록 code generation을 해준다.
+<details>
+<summary>예시</summary>
+<div>
+
+```dart
+// string thumbUrl을 인자로 받아와서 thumbUrl자리에 변환한 값을 return 해줌
+// 반드시 static으로 선언해야 함
+static pathToUrl(String thumbUrl) {
+    return 'http://$ip/$thumbUrl';
+}
+
+class RestaurantModel {
+    ...
+    @JsonKey(fromJson: pathToUrl)
+    final String thumbUrl;
+}
+```
+
+</div>
+</details>
+
+```dart
+part 'restaurant_model.g.dart';
+
+enum RestaurantPriceRange { expensive, medium, cheap }
+
+@JsonSerializable()
+class RestaurantModel {
+  final String id;
+  final String name;
+
+  // static으로 callback 함수를 넣어주면 해당하는 key가 인자로 들어감
+  // callback 함수의 return 값이 fromJson or toJson의 return 값이 됨
+  @JsonKey(
+    fromJson: pathToUrl,
+  )
+  final String thumbUrl;
+  final List<String> tags;
+  final RestaurantPriceRange priceRange;
+  final double ratings;
+  final int ratingsCount;
+  final int deliveryTime;
+  final int deliveryFee;
+
+  RestaurantModel({
+    required this.id,
+    required this.name,
+    required this.thumbUrl,
+    required this.tags,
+    required this.priceRange,
+    required this.ratings,
+    required this.ratingsCount,
+    required this.deliveryTime,
+    required this.deliveryFee,
+  });
+
+  // Json에서 데이터를 가져올 때 사용
+  factory RestaurantModel.fromJson(Map<String, dynamic> json) => _$RestaurantModelFromJson(json);
+  // 현재 인스턴스를 Json으로 변환할 때 사용
+  Map<String, dynamic> toJson() => _$RestaurantModelToJson(this);
+
+  // string thumbUrl을 인자로 받아와서 thumbUrl자리에 변환한 값을 return 해줌
+  // 반드시 static으로 선언해야 함
+  static pathToUrl(String thumbUrl) {
+    return 'http://$ip/$thumbUrl';
+  }
+}
+```
+
+### Code Generation 실행 결과
+Code Generation을 실행해주면 `_$RestaurantModelFromJson`와 `_$RestaurantModelToJson`이라는 함수가 생성이 된다.<br></br>
+이 중에서 FromJson 함수만 간단하게 살펴보면
+```dart
+RestaurantModel _$RestaurantModelFromJson(Map<String, dynamic> json) =>
+  RestaurantModel(
+    id: json['id'] as String,
+    name: json['name'] as String,
+    thumbUrl: DataUtils.pathToUrl(json['thumbUrl'] as String),
+    tags: (json['tags'] as List<dynamic>).map((e) => e as String).toList(),
+    priceRange:
+        $enumDecode(_$RestaurantPriceRangeEnumMap, json['priceRange']),
+    ratings: (json['ratings'] as num).toDouble(),
+    ratingsCount: json['ratingsCount'] as int,
+    deliveryTime: json['deliveryTime'] as int,
+    deliveryFee: json['deliveryFee'] as int,
+  );
+```
+여기서 주목해야할 부분은 thumbUrl을 pathToUrl 함수를 통해서 변환을 해주고 있다는 점이다.

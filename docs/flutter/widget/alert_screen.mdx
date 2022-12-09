@@ -1,0 +1,45 @@
+---
+sidebar_position: 2
+toc_max_heading_level: 4
+---
+
+# Alert Screen
+
+## SnackBar
+```dart
+final snackBar = SnackBar(
+    content: const Text('Snack bar render successful'),
+    action: SnackBarAction(
+    label: 'Undo', // Snackbar의 Label에 표시될 이름
+    onPressed: () {}, // Label(Undo) 눌렀을 때 실행될 함수
+    ), 
+);
+```
+
+<div style={{textAlign: "center"}}>
+<img src={require("./img/snackbar/snackbar_render.gif").default} style={{width: 300}}/>
+</div>
+
+### ScaffoldMessenger
+```dart
+ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(content: Text('인터넷 연결이 원활하지 않습니다.'))
+);
+```
+
+## showDialog
+```dart
+showDialog(context: context, builder: (context) { // (1)
+    return AlertDialog(
+        title: Text("Warning"),
+        content: Text("At least one wallet is required"),
+        actions: [
+        IconButton(onPressed: (){Navigator.of(context).pop();}, icon: Icon(Icons.close)),
+        ],
+    );
+});
+```
+
+<div style={{textAlign: "center"}}>
+<img src={require("./img/snackbar/show_dialog.gif").default} style={{width: 300}}/>
+</div>

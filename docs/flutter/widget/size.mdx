@@ -41,3 +41,127 @@ MediaQuery.of(context).size.height // 세로
 ```dart
 final bottomInsets = MediaQuery.of(context).viewInsets.bottom;
 ```
+
+## intrinsic Height/Width
+
+다음과 같은 code가 있다고 가정할 때 문자열이 Row의 모든 크기를 차지하지 않고 spaceBetween으로 나눈다.
+
+<Tabs>
+<TabItem value="Code">
+
+```dart
+Row(
+    children: [
+    ClipRRect(
+        borderRadius: BorderRadius.circular(8),
+        child: Image.asset('asset/img/food/pizza_ddeok_bok_gi.jpg',
+            width: 100, height: 100, fit: BoxFit.cover),
+    ),
+    const SizedBox(width: 16),
+    Expanded(
+        child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+            Text(
+            "떡볶이",
+            style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w500),
+            ),
+            Text(
+            "정말 맛있는 떡볶이 입니다!!",
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(
+                color: Colors.grey,
+                fontSize: 14.0,
+            ),
+            ),
+            Text(
+            '₩ 9000',
+            style: TextStyle(
+                color: Colors.green,
+                fontSize: 12.0,
+                fontWeight: FontWeight.w500),
+            textAlign: TextAlign.right,
+            ),
+        ],
+        ),
+    )
+    ],
+);
+```
+
+</TabItem>
+<TabItem value="실행결과">
+<div style={{textAlign: "center"}}>
+<img src={require("./img/size/intrinsic_heigh_normal.png").default} />
+</div>
+</TabItem>
+<TabItem value="DevTools">
+<img src={require("./img/size/intrinsic_heigh_dev_tools.png").default} />
+</TabItem>
+</Tabs>
+
+이는 Expanded가 기본적으로 필요한 공간 만큼만 차지하는 성질 때문인데, `IntrinsicHeight/Width` 위젯으로 감싸주면 자식 위젯에서 가장 큰 크기를 가진 높이/너비를 모든 자식들이 가지게 된다.
+
+### IntrinsicHeight 적용
+
+<Tabs>
+<TabItem value="실행결과">
+<img src={require("./img/size/intrinsic_heigh_after.png").default} />
+</TabItem>
+<TabItem value="DevTools">
+<img src={require("./img/size/intrinsic_heigh_after_devtools.png").default} />
+</TabItem>
+<TabItem value="Code">
+
+```dart
+IntrinsicHeight(
+    child: Row(
+    children: [
+        ClipRRect(
+        borderRadius: BorderRadius.circular(8),
+        child: Image.asset('asset/img/food/pizza_ddeok_bok_gi.jpg',
+            width: 100, height: 100, fit: BoxFit.cover),
+        ),
+        const SizedBox(width: 16),
+        Expanded(
+        child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+            Text(
+                "떡볶이",
+                style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w500),
+            ),
+            Text(
+                "정말 맛있는 떡볶이 입니다!!",
+                maxLines: 2,
+                // ellipsis: '...',
+                // clip: 초과한 문자열 자름
+                // fade: 초과한 문자열을 흐릿하게 만듬A
+                // visible: 넘어가는 문자열 보이게 만듬
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                color: Colors.grey,
+                fontSize: 14.0,
+                ),
+            ),
+            Text(
+                '₩ 9000',
+                style: TextStyle(
+                    color: Colors.green,
+                    fontSize: 12.0,
+                    fontWeight: FontWeight.w500),
+                textAlign: TextAlign.right,
+            ),
+            ],
+        ),
+        )
+    ],
+    ),
+);
+``` 
+
+</TabItem>
+</Tabs>

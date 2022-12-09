@@ -56,9 +56,28 @@ const config = {
     locales: ['en', 'kr'],
   },
 
+  // Local Search Plugin
+  // themes: [
+  //   [
+  //     "@easyops-cn/docusaurus-search-local",
+  //     /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
+  //     ({
+  //       hashed: true,
+  //       language: ["en"],
+  //       highlightSearchTermsOnTargetPage: true,
+  //       explicitSearchResultPath: true,
+  //     }),
+  //   ],
+  // ],
+  
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      algolia: {
+        appId: 'XZ3Y6KJN6W',
+        apiKey: '16a2f01a72e439b2c26ebf79aa451c26',
+        indexName: 'docusaurus-2',
+      },
       navbar: {
         title: 'Rookedsysc\'s docs',
         logo: {
@@ -83,10 +102,8 @@ const config = {
             label: 'Tutorial',
             sidebarId: 'tutorial',
           },
-          
 
-
-          {to: 'blog', label: 'Blog', position: 'right'},
+          { to: 'blog', label: 'Blog', position: 'right' },
           // Please keep GitHub link to the right for consistency.
           {
             href: 'https://github.com/rookedsysc/',
@@ -95,6 +112,15 @@ const config = {
           },
         ],
       },
+
+      liveCodeBlock: {
+        /**
+        * live playground 위치를 에디터의 위 또는 아래로 설정합니다.
+        * 설정할 수 있는 값: "top" | "bottom"
+        */
+        playgroundPosition: 'bottom',
+      },
+      
       footer: {
         style: 'dark',
         // links: [
@@ -180,16 +206,8 @@ const config = {
         additionalLanguages: ['dart', 'bash'],
       },
       plugins: ['@docusaurus/theme-live-codeblock'],
-        themeConfig: {
-          liveCodeBlock: {
-            /**
-            * live playground 위치를 에디터의 위 또는 아래로 설정합니다.
-            * 설정할 수 있는 값: "top" | "bottom"
-            */
-            playgroundPosition: 'bottom',
-    },
-  },
     }),
+
 };
 
 module.exports = config;

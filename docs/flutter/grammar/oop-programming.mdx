@@ -79,14 +79,28 @@ class Idol {
 ```
 
 #### Constructor
+Constructor는 생성자를 뜻하며 객체지향 언어에서 `객체의 초기화`를 담당하는 서브루틴을 가르킨다. 
+[생성자는 객체가 처음 생성될 때 호출되어 멤버 변수를 초기화하고, 필요에 따라 자원을 할당하기도 한다.](https://ko.wikipedia.org/wiki/%EC%83%9D%EC%84%B1%EC%9E%90)
+```dart
+class Idol {
+  String = "블랙핑크";
+  List<String> name = ['제니', '지수', '리사', '로제'];
+
+  Idol(this.name, this.members);
+  // 위와 아래는 정확하게 같은 동작을 한다. 다만 위는 this를 사용하여 더 간결하게 작성한 것이다.
+  // 여기서 this는 현재 class의 프로퍼티를 나타낸다.
+  // Idol(String name, List<String> members): this.name = name, this.members = members;
+}
+```
 
 ##### Named Constructor 
-
+named constructor는 전달해주는 property 명을 지정해주는게 아니라 class를 인스턴스화 할 때 클래스 뒤에 어떤 constructor를 사용할지 명시해주는 것이다. <br></br>
 ```dart
 class Employee {
   int empID;
   String empName;
 
+  // 인스턴스화 해서 ID의 값을 넣어줄 때 Emeployee.ID( value )이런 형태로 넣어준다.
   Employee.ID(this.empID); // Named Constructor Creation
   Employee.name(this.empName);
 }
@@ -148,6 +162,7 @@ factory RestaurantModel.fromJson({
   }
 ```
 :::
+
 
 #### immutable 프로그래밍: final
 한 번 값을 선언하고 나면 값을 변형할 수 없도록 해줌.<br></br>
@@ -241,15 +256,93 @@ class Idol {
   const Idol(this.name, this.members);
 }
 ```
+
+#### Named Parameter
+named parameter는 인스턴스를 생성하면서 값을 넣어줄 때 변수명을 명시해준다. 즉, 순서가 헷갈려서 값이 잘못되거나 하는 등의 일을 방지할 수 있다.
+```dart
+void main() {
+  // Idol까지만 치면 groupName과 membersName이 자동완성 된다.
+  final blackPink = Idol(groupName: '블랙핑크', membersName: ['지수', '제니', '로제', '리사']);
+  print(blackPink.groupName);
+  print(blackPink.membersName);
+}
+
+class Idol {
+  String groupName;
+  List<String> membersName;
+
+  // {}안에 넣어준 변수들은 모두 named parameter가 된다.
+  Idol({required this.groupName, required this.membersName});
+}
+```
+
 ### Getter와 Setter
+
+#### Getter 
+
+<Tabs>
+<TabItem value="기본형">
+
 ```dart
 자료형 get getterName {
 	code
+  return value;
 }
 ```
-와 같은 형태로 사용하며, setter는 잘 안씀.<br></br>
-데이터를 가져와서 { code }를 수행해줌.
+
+</TabItem>
+<TabItem value="예시">
+
+```dart
+void main() {
+  final blackPink = Idol(groupName: '블랙핑크', membersName: ['지수', '제니', '로제', '리사']);
+  print(blackPink.getGroupName); // 블랙핑크 출력
+  print(blackPink.getFirstMemberName); // 지수 출력
+}
+
+class Idol {
+  String groupName;
+  List<String> membersName;
+
+  Idol({required this.groupName, required this.membersName});
+
+  String get getGroupName => groupName;
+  String get getFirstMemberName => membersName[0];
+}
+```
+
+</TabItem>
+</Tabs>
+
+#### Setter
+```dart
+void main() {
+  final blackPink = Idol(groupName: '블랙핑크', membersName: ['지수', '제니', '로제', '리사']);
+  // 하나의 값만 전달될 수 있기 때문에 setter의 parameter는 하나만 존재할 수 있다.
+  blackPink.firstMember = '아이유';
+  print(blackPink.membersName); // 아이유 출력
+}
+
+class Idol {
+  String groupName;
+  List<String> membersName;
+
+  Idol({required this.groupName, required this.membersName});
+
+  // 무조건 한 개의 파라미터만 들어갈 수 있다.
+  // 왜냐하면 파라미터로 전달하는게 아니라 하나의 변수처럼 작용을 하기 때문이다. 즉, 
+  // setter = value 
+  // 와 같은 형식으로 사용되기 때문이다.
+  set firstMember(String name) {
+    membersName[0] = name;
+  }
+}
+```
+
+:::tip 참조
 [Getter와 Setter](https://github.com/rookedsysc/Flutter-Study/commit/a5199f9ec1fe5573748401023b75d355ecffa982) 
+:::
+
 ### Inheritance (상속)
 [Ingeritance](https://github.com/rookedsysc/Flutter-Study/commit/3b1f33e19fa8f891d0be56014fc590637ab2ef96)
 ### Override
@@ -258,18 +351,81 @@ class Idol {
 ### static
 class 내부의 method나 property에 static을 붙여서 사용하며, 이는 instance가 아닌 class에 값이 귀속됨. 즉, 해당 class에 static method나 property를 귀속해주면 해당 class를 상속받은 모든 자식 class 는 해당 static의 값을 귀속받음.<br></br>
 [static](https://github.com/rookedsysc/Flutter-Study/commit/8dc1037da3d001a3c20c5d8d43c823e52aa476d8)
-### Interface와 abstract
+### abstract 키워드와 Interface(추상클래스)
 어떤 특수한 구조를 강제하기 위해서 사용하며 swift의 protocol이랑 비슷함. <br></br>
-Interface 앞에 **abstract** 키워드를 사용해서 해당 Interface를 통해서 instance를 생성할 수 없도록 해줌.<br></br>
+`Interface(추상 클래스)`앞에 `abstract` 키워드를 사용해서 해당 Interface를 통해서 instance를 생성할 수 없도록 해주며 해당하는 `Interface`를 `implementation`키워드를 통해서 사용할 수 있습니다.<br></br>
+
+```dart title="예시코드"
+void main() {
+  // absract class는 인스턴스화 할 수 없음 
+  // IdolInterface idol = IdolInterface('BTS'); // Error;
+
+  IdolInterface bts = BoyGroup('BTS');
+  BoyGroup bigbang = BoyGroup('BIGBANG');
+  print(bts.getName); // BTS
+  print(bts.runtimeType); // BoyGroup
+  print(bigbang.runtimeType); // BoyGroup
+}
+
+abstract class IdolInterface {
+  String name;
+  String get getName;
+  IdolInterface(this.name);
+}
+
+// 상속과 유사한 기능도 함
+class BoyGroup implements IdolInterface {
+  String name;
+  String get getName => name;
+  BoyGroup(this.name);
+}
+
+// String name이 없기 때문에(구조를 지키지 않았기 때문에) Error 발생함
+// class GirlGroup implements IdolInterface {
+//   String get getName => name;
+// }
+```
+
+:::tip 참조 
 [Interface와 abstract](https://github.com/rookedsysc/Flutter-Study/commit/4c324c49d1449f66c87cab17953d9dd04a8c5a5e)
-### Generic (타입추론)
+:::
+
+
+### Generic (타입 변수로 받기)
 class에 타입을 외부에서 받을 때 사용하며 외부에서 타입을 지정해줌.<br></br>
-아래는 기본형 👇
+<Tabs>
+<TabItem value="기본형">
+
 ```dart
-인스턴스명<Generic>() {
+class 인스턴스명<Generic>() {
 }
 ```
+
+</TabItem>
+<TabItem value="예시">
+
+```dart
+void main() {
+  var lecture = Lecture<String, int>(name: '지은', age: 30);
+  print(lecture.name);
+  print(lecture.age);
+}
+
+// Generic을 변수로 외부에서 입력받을 수 있다.
+class Lecture<T, X>  {
+  T name;
+  X age;  
+  Lecture({required this.age, required this.name});
+}
+```
+
+</TabItem>
+</Tabs>
+
+:::tip 참조
 [generic](https://github.com/rookedsysc/Flutter-Study/commit/f9a665156b1537bffbbb1df0839f2adc98d3b1b1)
+[Json Serializable할 때 사용](https://github.com/rookedsysc/Flutter-Study/blob/ea94f31911f90eebfa578135fd01d25eb11c4644/Project/lv2_actual/lib/common/model/cursor_pagination_model.dart)
+::: 
 ## 변수 선언
 ### Private 변수
 private 변수는 해당 파일 밖에서 사용할 수 없는 변수를 뜻함.<br></br>
