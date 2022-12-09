@@ -13,7 +13,7 @@
 const config = {
   title: 'Rookedsysc\'s docs',
   tagline: 'Study Dart, Flutter, Swift, SwiftUI and other things',
-  url: 'https://rookedsaurusc.github.io',
+  url: 'https://blog.rookedsysc.com',
   baseUrl: '/',
   onBrokenLinks: 'ignore',
   onBrokenMarkdownLinks: 'warn',
@@ -35,14 +35,14 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/rookedsysc/rookedsysc_saurus.github.io/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/rookedsysc/rookedsaurusc/tree/main/packages/create-docusaurus/templates/shared/',
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/rookedsysc/rookedsysc_saurus.github.io/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/rookedsysc/rookedsaurusc/tree/main/packages/create-docusaurus/templates/shared/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
