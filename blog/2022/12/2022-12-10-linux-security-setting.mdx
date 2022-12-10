@@ -1,0 +1,70 @@
+---
+slug: linux-security-settings
+title: 리눅스 보안 설정
+authors: ["rookedsysc"]
+tags: ["Linux", "Security"]
+---
+
+# 클라이언트 설정
+
+```bash
+ssh-keygen -t rsa
+```
+
+> Generating public/private rsa key pair.<br></br>
+> Enter file in which to save the key (/root/.ssh/id_rsa):
+
+해당하는 디렉토리에 암호 생성
+
+> Enter passphrase (empty for no passphrase):<br></br>
+> Enter same passphrase again:
+
+암호를 입력하라고 나옴. 퍼블릭키로 접속시 암호 없이 바로 접속하려면 암호를 입력하지 않으면 됨.<br></br>
+
+# 서버 설정
+**클라이언트**에서 
+
+```bash
+cat ~/.ssh/id_rsa.pub
+```	
+
+으로 나오는 메시지를 긁어서 **서버**의 <br></br>
+```bash
+~/.ssh/authorized_keys 
+```
+파일에 카피해줌
+
+```bash
+vi /etc/ssh/sshd_config
+```
+
+sshd config 파일에서 <br></br>
+
+```bash
+PasswordAuthentication yes
+```
+
+부분을 
+
+```bash
+PasswordAuthentication no
+```
+
+로 수정 후 (주석도 같이 제거)
+
+```bash
+sudo systemctl restart ssh
+```
+
+ssh 재기동 해주면 암호를 이용한 ssh 접속은 차단됨
+
+:::info 맥에서 ssh를 설정하는 경우 
+```bash
+PasswordAuthentication no
+ChallengeResponseAuthentication no
+```
+둘을 no로 해주고
+```bash
+sudo launchctl stop com.openssh.sshd && sudo launchctl start com.openssh.sshd
+```
+명령을 통해 ssh를 재기동 해줘야 한다.
