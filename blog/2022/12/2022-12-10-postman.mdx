@@ -1,0 +1,61 @@
+---
+slug: postman
+title: Postman
+authors: [rookedsysc]
+tags: [postman, tools]
+---
+
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+
+## Url Path 변수 넣기 
+`:변수명` 키워드를 사용해서 넣으면 됨
+<div style={{textAlign: "center"}}>
+<img src={require("./img/postman/postman_tip_1.png").default} />
+</div>
+
+## Token 자동으로 넣기
+### 발급 받은 Token enviorment에 등록하기
+<Tabs>
+<TabItem value="Enviorment 생성">
+
+<div style={{textAlign: "center"}}>
+<img src={require("./img/postman/postman_tip_2.png").default} />
+</div>
+
+:::warning
+생성 후 반드시 저장 눌러줘야 함
+:::
+
+</TabItem>
+<TabItem value="Enviorment에 넣기">
+
+<div style={{textAlign: "center"}}>
+<img src={require("./img/postman/postman_tip_3.png").default} />
+</div>
+
+:::note
+send를 통해서 Token을 발급 받으면 자동으로 enviorment에 등록이 된다.
+:::
+
+</TabItem>
+<TabItem value="실행 결과">
+
+다음과 같이 자동으로 생성된 모습을 볼 수 있다.
+<div style={{textAlign: "center"}}>
+<img src={require("./img/postman/postman_tip_4.png").default} />
+</div>
+  
+</TabItem>
+</Tabs>
+
+
+### enviorment에 등록된 Token 사용하기
+
+<div style={{textAlign: "center"}}>
+<img src={require("./img/postman/postman_tip_5.png").default} />
+</div>
+
+
