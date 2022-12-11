@@ -171,3 +171,24 @@ RestaurantModel _$RestaurantModelFromJson(Map<String, dynamic> json) =>
   );
 ```
 여기서 주목해야할 부분은 thumbUrl을 pathToUrl 함수를 통해서 변환을 해주고 있다는 점이다.
+
+
+## Generic 변수로 받기
+[Class의 인스턴스의 Generic을 외부에서 받을 수 있는데,](https://blog.rookedsysc.com/docs/flutter/grammar/oop-programming#generic-%ED%83%80%EC%9E%85-%EB%B3%80%EC%88%98%EB%A1%9C-%EB%B0%9B%EA%B8%B0) 이를 활용해서 Json Serializable에서 Code Generation을 해줄 수 있다.
+```dart
+@JsonSerializable(
+  // 클래스가 Generic Type을 parameter로 받을 경우 해당 타입으로 직렬화함
+  genericArgumentFactories: true,
+)
+// 외부에서 generic을 지정해주기 위해 <T>를 사용
+class CursorPagination<T> {
+  final List<T> data;
+}
+```
+다음과 같이 선언을 해주고 이후 `fromJson`과 `toJson`에 각각 두 번째 인자에 Generic을 넣어주면 된다.
+```dart
+  actory CursorPagination.fromJson(Map<String, dynamic> json, T Function(Object? json) fromJsonT) 
+  => _$CursorPaginationFromJson(json, fromJsonT);
+  Map<String, dynamic> toJson(Object? Function(T value) toJsonT) 
+  => _$CursorPaginationToJson(this, toJsonT);
+```
