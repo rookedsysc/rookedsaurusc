@@ -1,0 +1,110 @@
+---
+sidebar_position: 2
+toc_max_heading_level: 4
+---
+
+# TabBar View
+
+## BottomNavigationBar 활용 
+BottomNavigationBar와 TabBarView를 활용해서 화면을 전환하는 방법
+### Contoller 선언
+```dart
+// SingleTickerProviderStateMixin은 Animation을 사용할 때 필요한 Mixin이다.
+// 해당 클래스를 상속한 다음 애니메이션 컨트롤러 생성자에게 vsync: this를 넘겨줘야 한다
+class _RootTabState extends State<RootTab> with SingleTickerProviderStateMixin {
+  // late : 나중에 해당 값을 쓸건데 값을 사용할 때는 값이 있을 것이다.
+  late TabController controller;
+  int index = 0;
+
+  @override
+  void initState() {
+    super.initState();
+
+    // length: tab bar item 수 
+    // vsync: 렌더링 엔진에서 필요한 것
+    // controller를 선언하는 현재 state
+    controller = TabController(length: 4, vsync: this);
+    controller.addListener(tabListner);
+  }
+
+  void tabListner() {
+    setState(() {
+      // 컨트롤러의 인덱스를 현재 인덱스에 넣어주겠다.
+      index = controller.index;
+    });
+  }
+
+```
+
+
+### TabBar View
+```dart
+TabBarView(
+    // 스크롤이 안되게 해줌
+    physics: NeverScrollableScrollPhysics(),
+    controller: controller,
+
+    // 위에서부터 TabBarView의 index 1, 2 ... 순으로 들어감
+    children: [
+      RestaurantScreen(),
+      Center(
+        child: Container(
+            child: Text('음식'),
+        ),
+      ),
+      Center(
+        child: Container(
+            child: Text('주문'),
+        ),
+      ),
+      Center(
+        child: Container(
+            child: Text('프로필'),
+        ),
+      ),
+    ],
+);
+```
+
+### BottomNavigationBar
+```dart
+BottomNavigationBar(
+    selectedItemColor: PRIMARY_COLOR, // 선택된 아이템 색
+    unselectedItemColor: BODY_TEXT_COLOR, // 선택되지 않은 아이템 색
+    selectedFontSize: 10.0, // 선택된 아이템 폰트 사이즈
+    unselectedFontSize: 10.0, // 선택되지 않은 폰트 사이즈
+    type: BottomNavigationBarType.shifting, // 선택된 탭이 조금 더 크게 보이게 만듬
+
+    // 선택된 탭의 인덱스가 들어가게 됨
+    onTap: (int index) {
+        debugPrint(index.toString());
+        // TabBarView의 해당하는 인덱스로 움직여라
+        controller.animateTo(index);
+    },
+    // 현재 인덱스
+    currentIndex: index,
+
+    // BottomNavigationBar에 들어갈 아이템들
+    items: const [
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home_outlined),
+          label: '홈',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.fastfood_outlined),
+          label: '음식',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.receipt_long_outlined),
+          label: '주문',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.person_outlined),
+          label: '프로필',
+        ),
+    ],
+),
+```
+
+### Reference
+[Code Factory 중급](https://github.com/rookedsysc/Flutter-Study/blob/main/Project/lv2_actual/lib/common/view/root_tab.dart)

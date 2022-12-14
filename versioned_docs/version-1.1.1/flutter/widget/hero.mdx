@@ -1,0 +1,33 @@
+---
+sidebar_position: 99
+toc_max_heading_level: 4
+---
+
+
+# Hero 위젯
+
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+Hero 위젯은 같은 태그를 가진 위젯끼리 화면간 이동할 때 그 위젯으로 부터 화면이 `fade in/fade out` 되는 듯한 효과를 준다.
+
+```dart
+Hero( 
+    tag: Object(heroKey),
+    child: image
+)
+```
+
+<Tabs>
+<TabItem value="적용 전">
+<div style={{textAlign: "center"}}>
+<img src={require("./img/hero/hero_after.gif").default} style={{width: 100}}/>
+</div>
+</TabItem>
+<TabItem value="적용 후">
+<div style={{textAlign: "center"}}>
+<img src={require("./img/hero/hero_before.gif").default} style={{width: 100}}/>
+</div>
+</TabItem>
+</Tabs>

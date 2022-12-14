@@ -1,0 +1,111 @@
+---
+sidebar_position: 3
+toc_max_heading_level: 4
+---
+
+# Retrofit 
+
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+
+`API 요청부터 모델화 하는 과정까지 전부 다 자동화를 해보자!`라는 생각으로 만들어진 Package이다. <br></br>
+그리고 이후에 알게 되겠지만 RestApi 요청을 좀 더 간결하게 보내줄 수 있게 도와주는 기능도 한다.
+
+## Example
+기존에 Dio를 사용해서 API를 요청하고 모델화를 통해서 사용하는 방법은 다음과 같았다.
+
+<Tabs>
+<TabItem value="API 요청">
+
+```dart title="getRestaurantDetail 함수"
+Future<Map<String, dynamic>> getRestaurantDetail() async {
+    final dio = Dio();
+    final accessToken = await storage.read(key: ACCESS_TOKEN_KEY);
+
+    final resp = await dio.get(
+      'http://$ip/restaurant/$id',
+      options: Options(headers: {
+        'authorization': 'Bearer $accessToken',
+      }),
+    );
+
+    return resp.data;
+  }
+```
+
+</TabItem>
+<TabItem value="모델화">
+
+```dart title="getRestaurantDetail 함수에서 데이터 불러옴"
+FutureBuilder<Map<String, dynamic>>(
+  // highlight-next-line
+  future: getRestaurantDetail(),
+    builder: (_, AsyncSnapshot<RestaurantDetailModel> snapshot) {
+
+      if(!snapshot.hasData) {
+        return const Center(child: CircularProgressIndicator());
+      }
+
+      // 모델화 하는 부분 
+      // highlight-next-line
+      final item = RestaurantDetailModel.fromJson(snapshot.data!);
+    }
+)
+```
+
+</TabItem>
+</Tabs>
+
+API 요청부터 데이터 모델화까지의 일련의 과정들을 한 번에 처리해줄 수 있는 게 retrofit이다.
+
+### retrofit 사용
+
+#### abstract class 생성
+
+```dart
+// hide Headers는 retrofit의 Headers와 충돌을 피하기 위함
+import 'package:dio/dio.dart' hide Headers;
+import 'package:retrofit/retrofit.dart';
+
+// code generation을 해줄거기 때문에 part 사용
+part 'restaurant_repository.g.dart';
+
+// 인스턴스화가 되지 않게 abstract로 선언
+@RestApi()
+abstract class RestaurantRepository {
+  // factory constuctor는 (=)을 사용해서 함수 Body를 지정해줄 수 있음
+  // 함수 Body를 Generate될 _RestaurantRepository로 지정함
+  factory RestaurantRepository(Dio dio, {String baseUrl/*http://$ip/restaurant*/}) 
+  = _RestaurantRepository;
+
+  // http://$ip/restaurant/{id}
+  @GET('/{id}')
+  // Header에 넣어줄 값을 지정
+  @Headers({
+    'authorization': 'Bearer ACCESS_TOKEN',
+  })
+  Future<RestaurantDetailModel> getRestaurantDetail({
+    // URL path segment(url 변수)에 넣어 줄 값을 Name parameter로 지정 
+    @Path('id') required String id,
+  });
+}
+```
+다음과 같이 작성해주고 code generation을 해주면 `_RestaurantRepository` 클래스에 `getRestaurantDetail` 함수가 생성된다. 
+
+
+#### Retrofit 사용
+위에 Restrofit을 사용하기 전과 비교하면 확연하게 짧아진 함수를 볼 수 있다. 
+```dart title='getRestaurantDetail 함수'
+  Future<RestaurantDetailModel> getRestaurantDetail() async {
+    final dio = Dio();
+    final repositroy = RestaurantRepository(dio, baseUrl: 'http://$ip/restaurant');
+
+    return repositroy.getRestaurantDetail(id: id);
+  }
+```
+해당하는 함수를 위와 같이 FutureBuilder에 future에 넣어줘서 데이터를 받아와서 사용한다. <br></br>
+달라진 부분은 Reurn type이 `<Map<String, dynamic>>`에서 `<RestaurantDetailModel>`로 바뀌었다는 것이다. <br></br>
+왜냐하면 Retrofit에서 API 요청을 하고 모델화까지 해주기 때문이다. <br></br>
+

@@ -1,0 +1,333 @@
+---
+sidebar_position: 5
+toc_max_heading_level: 4
+---
+
+# Session And Token
+
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+
+## Session
+
+<Tabs>
+  <TabItem value="Session 생성">
+    <img src={require("./img/session-and-token/how_to_create_session.png").default}/>
+  </TabItem>
+  <TabItem value="Session 사용">
+    <img src={require("./img/session-and-token/how_to_use_session.png").default}/>
+  </TabItem>
+  <TabItem value="Flow Chart">
+    <img src={require("./img/session-and-token/session_flow_chart.png").default}/>
+  </TabItem>
+</Tabs>
+
+<!--
+<Tabs>
+    <TabItem value="Session 생성">
+
+    ![](./img/session-and-token/how_to_create_session.png)
+        
+    </TabItem>
+
+    <TabItem value="Session 사용">
+
+    ![](./img/session-and-token/how_to_use_session.png)
+        
+    </TabItem>
+
+    <TabItem value="Flow Chart">
+
+    ![](./img/session-and-token/session_flow_chart.png)
+        
+    </TabItem>
+</Tabs> 
+-->
+
+### Session의 특징
+1. Session은 특수한 ID 값으로 구성되어 있다.
+2. Session은 **서버에서 생성**되며 **클라이언트에서 쿠키를 통해 저장**된다.
+3. 클라이언트에서 요청을 보낼 때 Session ID를 같이 보내면 현재 요청을 보내는 사용자가 누구인지 서버에서 알 수 있다. (요청마다 매번 아이디와 비밀번호를 물어볼 필요가 없음)
+4. Session ID는 데이터베이스에 저장되기 때문에 요청이 있을 때마다 데이터 베이스를 확인해야 한다.
+5. 서버에서 데이터가 저장되기 때문에 클라이언트에 사용자 정보가 노출될 위험이 없다.
+6. 데이터 베이스에 Session을 저장해야하기 때문에 **Horizontal Scaling**이 어렵다.
+
+:::tip Horizontal Scaling?
+서버에서 부하를 분산하기 위해서 서버를 수평적으로 확장하는 것을 뜻한다.
+:::
+
+## Token 
+유저의 정보를 Base 64로 인코딩된 String 값에 저장하는 도구를 뜻한다.
+
+<Tabs>
+  <TabItem value="Token 생성 방식">
+    <img src={require("./img/session-and-token/how_to_create_token.png").default}/>
+  </TabItem>
+  <TabItem value="Token 사용 방식">
+    <img src={require("./img/session-and-token/how_to_use_token.png").default}/>
+  </TabItem>
+  <TabItem value="Flow Chart">
+    <img src={require("./img/session-and-token/token_flow_chart.png").default}/>
+  </TabItem>
+</Tabs>
+
+### Token의 특징
+1. Tokend은 Header, Payload, Signature로 구성되어 있으며 **Base 64로 인코딩** 되어 있다.
+2. Token은 서버에서 생성되며 클라이언트에서 저장된다. (Session이랑 동일)
+3. 클라이언트에서 요청을 보낼 때 Token ID를 같이 보내면 현재 요청을 보내는 사용자가 누구인지 서버에서 알 수 있다. (요청마다 매번 아이디와 비밀번호를 물어볼 필요 없음) (Session이랑 동일)
+4. Token은 **데이터베이스에 저장되지 않고 Signature 값을 이용해서 검증**할 수 있다. 그래서 검증할 때마다 데이터베이스를 매번 들여다 볼 필요가 없다.
+5. 정보가 모두 토큰에 담겨있고 클라이언트에서 토큰을 저장하기 때문에 **정보 유출의 위험**이 있다.
+6. 데이터베이스가 필요없기 때문에 Horizontal Scaling이 쉽다.
+
+
+## Session Vs Token 비교 
+
+| 비교 요소 | Session | Token | 
+| --- | --- | --- |
+| 유저 정보 저장 위치 | 서버 | 클라이언트 |
+| 클라이언트에서 서버로 보내는 정보는? | 쿠키 | 토큰 |
+| 유저 정보를 가져올 때 데이터베이스를 확인해야 하는가? | O | X |
+| 클라이언트에서 인증 정보를 읽을 수 있는가? | 불가능 | 가능 | 
+| Horizontal Scaling이 쉬운가? | 어려움 | 쉬움 |
+
+## JWT란?
+- Json Web Tokeno의 약자로 **세션과 토큰을 합친 것**이다.
+- Header, Payload, Signature로 구성되어 있으며 **Base 64로 인코딩** 되어 있다.
+- Header는 토큰의 종류와 암호화 알고리즘 등 토큰에 대한 정보가 들어있다.
+- Payload는 발행일, 만료일, 사용자 ID 등 사용작 검증에 필요한 정보가 들어있다.
+- `Signature`는 `Base64 인코딩된 Header와 Payload를 알고리즘으로 싸인한 값`이 들어있다. 이 값을 기반으로 토큰이 발급된 뒤로 조작되었는지 검증할 수 있다.
+
+<Tabs>
+  <TabItem value="JWT 예시">
+    <img src={require("./img/session-and-token/jwt_example.png").default}/>
+  </TabItem>
+  <TabItem value="JWT TO JSON">
+    <img src={require("./img/session-and-token/jwt_to_json.png").default}/>
+  </TabItem>
+</Tabs>
+
+### Refresh Token & Access Token
+- 두 Token ahen JWT 기반이다.
+- Access Token은 API 요청을 할 때 검증용 토큰으로 사용된다.
+- Refresh Token은 Access Token을 갱신하기 위한 토큰이다.
+- Access Token은 만료 시간이 짧고 Refresh Token은 만료 시간이 길다.
+- 상대적으로 노출이 적은 Refersh Token의 경우 Access Token을 새로 발급받을 때만 사용되기 때문에 탈취 가능성이 적다.
+
+#### Token 사용 과정
+
+<Tabs>
+  <TabItem value="토큰 발급 과정">
+    <img src={require("./img/session-and-token/token_issuance_precess.png").default}/>
+  </TabItem>
+  <TabItem value="Refresh Token 사용 과정">
+    <img src={require("./img/session-and-token/process_for_using_refresh_token.png").default}/>
+  </TabItem>
+  <TabItem value="Access Token 사용 과정">
+    <img src={require("./img/session-and-token/process_for_using_access_token.png").default}/>
+  </TabItem>
+  <TabItem value="전체 토큰 생성 로직">
+    <img src={require("./img/session-and-token/full_token_issuance_precess.png").default}/>
+    <div>전체 토큰 생성 로직은 Access Token이 만료 되었을 경우 Refresh Token을 이용해 새로운 Access Token을 발급받는 과정을 포함하고 있기 때문에 좀 더 복잡할 수 있다.</div>
+  </TabItem>
+</Tabs>
+
+:::note
+- Basic : 실제 인증 정보 사용 (아이디/패스워드)
+- Bearer : 토큰 사용
+:::
+
+#### Refresh Token 예제
+![](./img/session-and-token/refresh_token_exam.png)
+:::note
+- iat : 발급 시간
+- exp : 만료 시간
+:::
+
+### Reference
+[JWT Token Test Site](https://jwt.io/)
+
+## 딜리버리 앱 프로젝트를 통해 구현해보기
+
+### 기존의 문제
+[Retrofit을 통해서 accessToken을 하드코딩 한 후, 서버에 요청을 보내는 방식으로 detail screen을 구현했다.](
+  https://github.com/rookedsysc/Flutter-Study/commit/c5ef5fa83ce9af402bea5efd62c2ce4f2a5b30a9
+) 하지만 이는 accessToken을 매번 재입력해줘야 하며, accessToken이 만료되면 이를 검증해주는 로직이 없다는 문제점이 있다.<br></br>
+이를 해결해주기 위해서 dio 패키지는 실제로 요청을 보내기 전에 `dio interperter`를 통해서 Token을 검증해줄 수 있다.
+
+#### Interceptor: onRequest
+dio Interceptor의 `onRequest`는 실제로 요청을 보내기 전에 호출되는 함수이다. 이를 통해서 accessToken을 검증해줄 수 있다.
+
+<Tabs>
+<TabItem value="Interceptor에 보내는 요청">
+아래 코드와 같이 accessToken임을 알 수 있는 헤더를 추가하고 요청하면 Interceptor에서 실제 accessToken을 넣어준다.
+
+```dart title="restaurant_repository.dart" showLineNumbers {8}
+@RestApi()
+abstract class RestaurantRepository {
+  factory RestaurantRepository(Dio dio, {String baseUrl/*http://$ip/restaurant*/}) 
+  = _RestaurantRepository;
+
+  @GET('/{id}')
+  @Headers({
+    'accessToken' : 'true' 
+  })
+  Future<RestaurantDetailModel> getRestaurantDetail({
+    // URL path segment에 해당하는 부분을 Name parameter로 지정 
+    @Path('id') required String id,
+  });
+}
+```
+
+</TabItem>
+<TabItem value="Interceptor">
+
+```dart title="custom_interceptor.dart" showLineNumbers {22-31}
+import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:lv2_actual/common/const/data.dart';
+
+
+class CustomInterceptor extends Interceptor {
+  final FlutterSecureStorage storage;
+  CustomInterceptor({
+    required this.storage,
+  });
+  ... 
+  // 요청을 보낼 때
+  @override
+  void onRequest(RequestOptions options, RequestInterceptorHandler handler) async {
+    // method: Post / Get, option: url, data, headers
+    debugPrint('[REQUEST] ${options.method} ${options.uri}');
+
+    // 요청이 보내질 때마다 요청의 Header에 accessToken: true가 있으면 
+    // 실제 토큰을 가져와서 authorization: bearer $token 형태로 헤더를 변경한다. 
+    // 매번 토큰을 코드상에 정의해놓을 수 없기 때문에 해당하는 과정을 사용한다.
+    if(options.headers['accessToken'] == 'true') {
+      // 헤더 삭제
+      options.headers.remove('accessToken');
+      // 실제 토큰으로 대체 
+      final token = await storage.read(key: ACCESS_TOKEN_KEY);
+
+      // header에 accessToken 값을 추가
+      options.headers.addAll({
+        'authorization': 'Bearer $token',
+      });
+    }
+
+    // 요청 전송
+    return super.onRequest(options, handler);
+  }
+
+  ...
+}
+```
+
+</TabItem>
+</Tabs>
+
+#### Interceptor 사용
+```dart title="restaurant_detail_screen.dart" showLineNumbers {8-10}
+class RestaurantDetailScreen extends StatelessWidget {
+  final String id;
+  const RestaurantDetailScreen({required this.id, Key? key}) : super(key: key);
+  // RestaurantDetail 받아오는 함수
+  Future<RestaurantDetailModel> getRestaurantDetail() async {
+    final dio = Dio();
+
+    dio.interceptors.add(
+      CustomInterceptor(storage: storage)
+    );
+
+    final repositroy = RestaurantRepository(dio, baseUrl: 'http://$ip/restaurant');
+    // Retrofit으로 대체 
+    // final accessToken = await storage.read(key: ACCESS_TOKEN_KEY);
+   return repositroy.getRestaurantDetail(id: id);
+  }
+}
+```
+
+#### Reference
+[Request 요청 Commit](cc9512ea146f1d74849df68f7af241419aa93258)
+
+### 에러 처리
+#### 401 Error
+```dart title="custom_interceptor.dart" showLineNumbers {33-36}
+class CustomInterceptor extends Interceptor {
+  final FlutterSecureStorage storage;
+  CustomInterceptor({required this.storage});
+
+  @override
+  void onRequest(RequestOptions options, RequestInterceptorHandler handler) async {
+    ...
+  }
+
+  // 에러가 발생했을 때
+  @override
+  void onError(DioError err, ErrorInterceptorHandler handler) async {
+    // 401에러가 났을 때 (status code)
+    // 토큰을 재발급 받는 시도를 하고 토큰이 재발급되면 다시 새로운 토큰으로 요청한다.
+    debugPrint(
+        '[ERROR] [${err.requestOptions.method}] ${err.requestOptions.uri}');
+
+    final refreshToken = await storage.read(key: REFRESH_TOKEN_KEY);
+
+    // refreshToken이 없으면 에러를 return
+    if (refreshToken == null) {
+      // handler에는 onRequest가 실제 request를 보내기 전 요청을 보낼지 아니면 에러를 생성시킬지 결정을 하고 있음
+      // 에러 return 함
+      return handler.reject(err);
+    }
+
+    final isStatus401 = err.response?.statusCode == 401;
+    // refresh 요청을 하려다가 에러가 났음. 즉, refreshToken 자체가 문제가 있음.
+    final isPathRefresh = err.requestOptions.path == '/auth/refresh';
+
+    // 401에러가 났고 Refresh 요청이 아니라면 해당 구문 실행
+    // Refresh 요청인지 검증 하는 이유는 
+    // Refresh 요청을 하다가 401에러가 났다면 해당 Refresh Token이 유효하지 않다는 의미이기 때문
+    if (isStatus401 && !isPathRefresh) {
+      try {
+        final dio = Dio();
+
+        // 새로운 accessToken을 받아옴
+        final resp = await dio.post(
+          'http://$ip/auth/token',
+          options: Options(
+            headers: {
+              'authorization': 'Bearer $refreshToken',
+            },
+          ),
+        );
+        final accessToken = resp.data['accessToken'];
+
+        // 새로운 accessToken을 받는데 성공하면 
+        // token을 request header에 추가하고 storage에도 저장함
+        final options = err.requestOptions;
+        options.headers.addAll({'authorization': 'Bearer $accessToken'});
+        await storage.write(key: ACCESS_TOKEN_KEY, value: accessToken); 
+
+        // 에러를 발생시킨 옵션에서 accessToken만 변경 후 요청 재전송
+        final response = await dio.fetch(options);
+
+        // handler.resolve(response)는 에러가 나든 어쩌든 그 결과값을 Response로 받아서 다음으로 넘겨줌
+        // 즉, accessToken을 재발급 받아서 다시 요청을 보내고 그 성공한 결과값을 받아서 dio 생성지점으로 넘겨줌
+        return handler.resolve(response);
+      } on DioError catch (e) {
+        // refresh 요청을 하려다가 에러가 났음. 즉, refreshToken 자체가 문제가 있음.
+        // 그래서 refreshToken을 지워줌
+        await storage.delete(key: REFRESH_TOKEN_KEY);
+        // 에러를 return
+        return handler.reject(e);
+      }
+    }
+
+    return handler.reject(err);
+  }
+}
+```
+
+#### Reference
+[Error 처리  Commit](https://github.com/rookedsysc/Flutter-Study/commit/810f3cbce4ffc67efba3542e5c2cf519b30937cc?diff=split)
