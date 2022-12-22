@@ -113,6 +113,14 @@ const config = {
         ],
       },
 
+      themeConfig: {
+        colorMode: {
+          defaultMode: 'light',
+          disableSwitch: false,
+          respectPrefersColorScheme: false,
+        },
+      },
+
       liveCodeBlock: {
         /**
         * live playground 위치를 에디터의 위 또는 아래로 설정합니다.

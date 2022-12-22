@@ -1,0 +1,95 @@
+---
+sidebar_position: 1
+toc_max_heading_level: 4
+---
+
+# Go Router
+
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+
+구글 플러터 팀에서 [공식으로 지원](https://pub.dev/packages/go_router)하는 패키지<br></br>[Documentation](https://docs.page/csells/go_router)
+
+## Initalization
+
+<Tabs>
+<TabItem value="Widget build(){}">
+
+```dart 
+// 기존의 MaterialApp에 .route를 추가해줌 
+MaterialApp.router(
+  // 3.2 버전 이후로 사용해줘야 함
+  // 라우트 정보를 전달하는 역할을 함
+  routeInformationProvider: _router.routeInformationProvider,
+  // URI String을 상태 및 Go Router에서 사용할 수 있는 형태로 반환해주는 함수
+  routeInformationParser: _router.routeInformationParser,
+  // 위에서 변경된 값으로 실제로 어떤 라우트를 보여줄지 정하는 함수
+  routerDelegate: _router.routerDelegate,
+);
+```
+
+</TabItem>
+<TabItem value="GoRouter 선언">
+
+`name`에다가 라우트 이름을 넣어주고 `goNamed()` 함수를 통해서 해당 라우트로 이동할 수 있음. 그리고 `Route 안에 Route`를 지정해주면 `nesting`이 가능함.
+```dart
+final _router = GoRouter(
+// 홈스크린
+initialLocation: '/',
+  routes: [
+    GoRoute(
+      path: '/',
+      // state에는 파라미터가 들어있음
+      builder: (_, state) => HomeScreen(),
+        routes: [
+          GoRoute(
+              // nesting : 라우트 안에 라우트 넣을 때는 '/'를 빼도 됨
+            path: 'one',
+            builder: (_, state) => OneScreen(),
+            // http://..../one/two와 같은 형식으로 nesting됨
+            routes: [
+              GoRoute(
+                  path: 'two',
+                  builder: (_, state) => TwoScreen(),
+                  // http://..../one/two/three와 같은 형식으로 nesting됨
+                  routes: [
+                    GoRoute(
+                      path: 'three',
+                      name: ThreeScreen.routeName,
+                      builder: (_, state) => ThreeScreen(),
+                  ),
+                ],
+              ),
+          ],
+        ),
+      ],
+    ),
+  ],
+)
+```
+
+</TabItem>
+</Tabs>
+
+## 페이지 이동
+
+### Push
+```dart
+// namedPush
+context.goNamed(ThreeScreen.routeName);
+// stack push
+context.go('/one/two/three'); 
+```
+
+go router를 이용해서 nesting된 페이지를 push 하게 되면 상위 페이지들이 스택처럼 쌓이게 됨.<br></br>
+<div style={{textAlign: "center"}}>
+<img src={require("./img/go-router/go_router_push.gif").default} style={{width: 300}}/>
+</div>
+
+### Pop
+```dart
+context.pop();
+```
+

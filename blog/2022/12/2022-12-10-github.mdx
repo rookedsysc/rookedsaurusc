@@ -6,6 +6,11 @@ tags: [Github]
 toc_max_heading_level: 4
 ---
 
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+
 ## Git이란?
 Git은 컴퓨터 파일의 **변경사항을 추적**하고 여러 명의 사용자들 간에 해당 파일들의 작업을 조율하기 위한 **분산 버전 관리 시스템**임.<br></br>
 2005년에 [리누스 토발즈](https://ko.wikipedia.org/wiki/%EB%A6%AC%EB%88%84%EC%8A%A4_%ED%86%A0%EB%A5%B4%EB%B0%9C%EC%8A%A4)님이 개발하심.<br></br>
@@ -26,16 +31,69 @@ git commit -m "commit 메시지"
 git push
 ```
 
-## git request Download(Pull 하기)
+## 브랜치
+
+### 현재 내 브랜치 확인
+
+```bash
+git branch
+```
+
+### 브랜치 생성
+
+```bash titile="브랜치 새로 만들면서 브랜치 변경"
+git switch -c [브랜치명] 
+```
+
+### 브랜치 전환
+
+```bash
+git switch [브랜치명]
+```
+
+### 원격 저장소의 브랜치 
+
+<Tabs>
+<TabItem value="원격 브랜치 확인">
+
+```bash
+git branch -r 
+```
+
+</TabItem>
+<TabItem value="원격 브랜치로 스위치">
+
+```bash
+git switch -t orgin/[원격 브랜치명]
+```
+
+</TabItem>
+<TabItem value="원격 브랜치 삭제">
+  
+```bash
+git push origin --delete [브랜치명]
+```
+
+</TabItem>
+</Tabs>
+
+### 브랜치 삭제
+
+```bash
+git branch -d [브랜치명]
+```
+
+
+### git request Download(Pull 하기)
 Merge가 안되고 open되어 있는 request가 local에서 날아갔으면 다음과 같이 다운받아주면 됨.
 
 - UserName : github ID
 - RepoName : Request가 있는 Repo 이름
-- BranchName : Request를 생성한 Branch 이름
+- 브랜치Name : Request를 생성한 브랜치 이름
 
 ```bash
-git pull git@github.com:UserName/RepoName.git BranchName
-git switch BranchName
+git pull git@github.com:UserName/RepoName.git 브랜치Name
+git switch 브랜치Name
 ```
 실행 후 폴더에 가보면 해당 request에서 작성한 코드/파일들이 남아있음.
 

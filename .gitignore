@@ -21,3 +21,7 @@ yarn-error.log*
 
 # ESLint
 .eslintcache
+
+# Posting
+blog/2022/12/2022-12-18-transfer-student.mdx
+

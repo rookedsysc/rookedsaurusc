@@ -56,7 +56,9 @@ import TabItem from '@theme/TabItem';
 [Retrofit을 통해서 accessToken을 하드코딩 한 후, 서버에 요청을 보내는 방식으로 detail screen을 구현했다.](
   https://github.com/rookedsysc/Flutter-Study/commit/c5ef5fa83ce9af402bea5efd62c2ce4f2a5b30a9
 ) 하지만 이는 accessToken을 매번 재입력해줘야 하며, accessToken이 만료되면 이를 검증해주는 로직이 없다는 문제점이 있다.<br></br>
-이를 해결해주기 위해서 dio 패키지는 실제로 요청을 보내기 전에 `dio interperter`를 통해서 Token을 검증해줄 수 있다.
+이를 해결해주기 위해서 dio 패키지는 실제로 요청을 보내기 전에 `dio interceptor`를 통해서 Token을 검증해줄 수 있다.
+
+### 요청을 보낼 때 
 
 #### Interceptor: onRequest
 dio Interceptor의 `onRequest`는 실제로 요청을 보내기 전에 호출되는 함수이다. 이를 통해서 accessToken을 검증해줄 수 있다.
@@ -300,7 +302,7 @@ class CursorPaginationMeta {
 <details>
 <summary>CursorPaginationFromJson</summary>
 <div>
-3번 줄과 7번줄을 보면 알 수 있듯이 data라는 변수에는 json에서 'data'에 해당하는 부분을 fromJsonT 즉, 외부에서 받아온 값(여기서는 RestaurantModel에 해당함)으로 변환해서 넣어준다.
+3번 줄과 7번줄을 보면 알 수 있듯이 data라는 변수에는 json에서 'data'에 해당하는 부분을 fromJsonT 즉, 외부에서 받아온 값(여기서는 RestaurantModel에 해당함)을 dynamic 타입으로 변환해서 넣어준다.
 
 ```dart showLineNumbers {3,7}
 CursorPagination<T> _$CursorPaginationFromJson<T>(
