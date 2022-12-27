@@ -93,3 +93,33 @@ go router를 이용해서 nesting된 페이지를 push 하게 되면 상위 페�
 context.pop();
 ```
 
+## Error
+
+### No Such Method Error
+다음과 같은 에러는 잘못된 context에서 go router를 불러오고 있기 때문에 발생하는 에러임.
+:::warning
+예외가 발생했습니다.<br></br>
+NoSuchMethodError (NoSuchMethodError: Class 'SliverMultiBoxAdaptorElement' has no instance method 'goNamed'.<br></br>
+Receiver: Instance of 'SliverMultiBoxAdaptorElement'<br></br>
+Tried calling: goNamed("restaruantDetail", params: _LinkedHashMap len:1))
+:::
+
+아래의 예제에서는 PaginationListView의 itemBuilder의 context에서 goNamed를 불러오고 있음.
+
+<div style={{textAlign: "center"}}>
+<img src={require("./img/go-router/no_such_method_error.png").default}/>
+</div>
+
+따라서 다음의 context를 다음과 같이 수정해주면
+
+<div style={{textAlign: "center"}}>
+<img src={require("./img/go-router/no_such_method_error_solve_1.png").default}/>
+</div>
+
+정상적으로 동작하는 모습을 볼 수 있음. 👇 <br></br>
+
+<div style={{textAlign: "center"}}>
+<img src={require("./img/go-router/no_such_method_error_solve_2.gif").default}/>
+</div>
+
+
