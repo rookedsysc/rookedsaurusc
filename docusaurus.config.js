@@ -51,11 +51,6 @@ const config = {
     ],
   ],
 
-  i18n: {
-    defaultLocale: 'en',
-    locales: ['en', 'kr'],
-  },
-
   // Local Search Plugin
   // themes: [
   //   [
