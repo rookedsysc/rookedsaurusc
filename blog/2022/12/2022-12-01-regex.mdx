@@ -5,6 +5,10 @@ authors: [rookedsysc]
 tags: [Blog, String, Regex, Regular Expression]
 ---
 
+<div style={{textAlign: "center"}}>
+<img src={require("./img/regex/regex.gif").default}/>
+</div>
+
 ## \역슬래쉬
 \d : 숫자 <br></br>
 \D : 문자 <br></br>
@@ -27,10 +31,14 @@ str1과 str2 사이에 있는 모든 문자열 찾음<br></br>
 str1 (.*?) str2
 ```
 
-
 ## 변수
 () 안에 있는 문자열을 하나의 그룹으로 묶어서 관리 <br></br>
 (\d{3})-(\d{4})-(\d{4}) : 010-1234-5678 <br></br>
+### 변수 호출하기(vim)
+\1: 010
+\2: 1234
+\3: 5678
+### 변수 호출하기(vscode)
 $1 : 010 <br></br>
 $2: 1234 <br></br>
 $3 : 5678 <br></br>
